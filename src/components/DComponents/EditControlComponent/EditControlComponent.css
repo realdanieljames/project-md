@@ -1,0 +1,47 @@
+.edit-item-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin: auto;
+    border: 2px solid black;
+    width: 500px;
+    height: 150px;
+    padding: 3px;
+    background-color: aqua;
+}
+
+.edit-control-header {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    margin: auto;
+}
+
+.name-input {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    margin: auto;
+}
+
+.price-input {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    margin: auto;
+}
+
+.image-input {
+    grid-row: 3/4;
+    grid-column: 1/2;
+    margin: auto;
+}
+
+.description-input {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    margin: auto;
+}
+
+.submit-button {
+    grid-row: 3/4;
+    grid-column: 3/4;
+    margin: auto;
+}
