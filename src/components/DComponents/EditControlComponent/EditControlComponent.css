@@ -1,6 +1,10 @@
 .edit-item-button {
-    margin: auto;
-    color: red;
+    /* margin-left: 50px; */
+    background-color: rgb(0, 136, 255);
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 20px;
 }
 
 .edit-item-container {
