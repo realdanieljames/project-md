@@ -1,3 +1,8 @@
+.edit-item-button {
+    margin: auto;
+    color: red;
+}
+
 .edit-item-container {
     display: grid;
     grid-template-columns: 2fr 2fr 1fr;

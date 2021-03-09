@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Grocery Store Catalogue</h1>
-        <EditControlComponent items={this.state.items} showEditControls={this.state.showEditControls}/>
+        <EditControlComponent items={this.state.items} />
       </div>
     );
   }
