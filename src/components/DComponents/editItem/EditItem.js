@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import "./EditControlComponent.css";
+import "./EditItem.css";
 
 //========================================================================================//
 //========================================================================================//
 
 const EditControlComponent = (props) => {
 const [showEditControls, setShowEditControls] = useState(false);
-props.items.map((value) => {
 
-});
+console.log(props)
 //========================================================================================//
 //========================================================================================//
 
@@ -20,8 +19,11 @@ const openEditControlComponent = () => {
     }
 };
 
-const prePopulateTextFields = () => {
-    console.log('level');
+const prePopulateTextFields = (event) => {
+
+    console.log(event.target.value);
+    
+    
 };
 
 //========================================================================================//
@@ -36,11 +38,11 @@ return (
         <div className="edit-item-container">
         <h3 className="edit-control-header">Edit Item</h3>
         <div>
-            <select>
+            <select onChange={prePopulateTextFields}>
             <option>...</option>
             {props.items.map((value) => {
                 return (
-                <option onClick={prePopulateTextFields} value={value.name}>
+                <option  value={value.name}>
                     {value.name}
                 </option>
                 );
@@ -48,7 +50,7 @@ return (
             </select>
         </div>
 
-        <input className="name-input" placeholder="Name" />
+        <input value={'remember'} type="text" className="name-input" placeholder="Name" />
         <input className="price-input" placeholder="Price" />
         <input className="image-input" placeholder="Image" />
         <input className="description-input" placeholder="Description" />
