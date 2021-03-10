@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 import "./EditItem.css";
 
 //========================================================================================//
@@ -7,7 +9,7 @@ import "./EditItem.css";
 const EditControlComponent = (props) => {
 const [showEditControls, setShowEditControls] = useState(false);
 
-console.log(props)
+console.log(props);
 //========================================================================================//
 //========================================================================================//
 
@@ -20,10 +22,7 @@ const openEditControlComponent = () => {
 };
 
 const prePopulateTextFields = (event) => {
-
     console.log(event.target.value);
-    
-    
 };
 
 //========================================================================================//
@@ -35,27 +34,50 @@ return (
     </button>
 
     {showEditControls ? (
-        <div className="edit-item-container">
+        <form className="edit-item-container">
         <h3 className="edit-control-header">Edit Item</h3>
         <div>
             <select onChange={prePopulateTextFields}>
             <option>...</option>
             {props.items.map((value) => {
-                return (
-                <option  value={value.name}>
-                    {value.name}
-                </option>
-                );
+                return <option value={value.name}>{value.name}</option>;
             })}
             </select>
         </div>
+        
 
-        <input value={'remember'} type="text" className="name-input" placeholder="Name" />
-        <input className="price-input" placeholder="Price" />
-        <input className="image-input" placeholder="Image" />
-        <input className="description-input" placeholder="Description" />
-        <button className="submit-button">Submit</button>
-        </div>
+        <TextField
+
+            variant="filled"
+            margin="normal"
+            defaultValue={"remember"}
+            type="text"
+            className="name-input"
+            placeholder="Name"
+        />
+        <TextField
+
+            variant="filled"
+            margin="normal"
+            className="price-input"
+            placeholder="Price"
+        />
+        <TextField
+            variant="filled"
+            margin="normal"
+            className="image-input"
+            placeholder="Image"
+        />
+        <TextField
+            variant="filled"
+            margin="normal"
+            className="description-input"
+            placeholder="Description"
+        />
+
+
+        <Button className="submit-button" variant="contained">Submit</Button>
+        </form>
     ) : null}
     </div>
 );
