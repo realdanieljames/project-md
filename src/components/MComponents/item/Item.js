@@ -1,23 +1,35 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import './item.css'
 
-const handleDeleteItem = (id) => {
-    console.log(id)
-}
+
+
 
 export default function Item(props) {
+    console.log('props',props)
+    const [array, setArray] = useState(props.item)
+
+    const handleDeleteItem = (id) => {
+        // console.log('props',props)
+        console.log('outside setArray',props.item)
+        setArray((prevState)=>{
+            console.log('inside setArray',props.item)
+            console.log('prevState',prevState)
+        })
+    }
+
     console.log(props.item.name)
+    const { id, name, price, imageLink, description } = props.item
     return (
         <div>
-            <img src={props.item.imageLink}></img>
+            <img src={imageLink}></img>
             <div className='description'>
-                <h2>{props.item.name}</h2>
-                <p>{props.item.id}</p>
-                <p>{props.item.description}</p>
+                <h2>{name}</h2>
+                <p>{id}</p>
+                <p>{description}</p>
             </div>
-            <h1 className='price'>{props.item.price}</h1>
-            <button onClick={handleDeleteItem(props.item.id)}>X</button>
+            <h1 className='price'>{price}</h1>
+            <button onClick={() => handleDeleteItem(id)}>X</button>
         </div>
     )
 }
