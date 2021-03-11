@@ -9,19 +9,29 @@
 }
 
 .overall-item-container {
-    /* display: grid;
-    grid-template-columns: 60% 40%;
-    grid-template-rows: 80%;
-    margin: auto; */
+    /* border: red solid 2px; */
+    display: grid;
+    grid-template-columns: 5fr 3fr;
+    grid-template-rows: 1fr;
+    width: 70%;
+    margin: auto;
+}
+
+.display-items {
+    grid-column: 2/3;
+    justify-self: center;
 }
 
 .edit-item-container {
     display: grid;
+    grid-column: 1/2;
+    grid-row: 1/2;
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 2fr 2fr 2fr 2fr 2fr;
-    margin: auto;
-    border: 2px solid black;
-    width: 50%;
+    grid-template-rows: repeat (6, 1fr);
+    /* margin: auto; */
+    /* border: 2px solid black; */
+    /* width: 90%; */
+    /* justify-content: center; */
     /* height: 500px; */
     /* padding: 3px; */
     /* background-color: aqua; */
@@ -34,10 +44,13 @@
 }
 
 .select-options {
-    grid-row: 1/2;
+    grid-row: 2/3;
     grid-column: 1/2;
-    margin: auto;
-    padding-left: 250px;
+    justify-self: center;
+    /* width: 150px; */
+    /* height: 20px; */
+    /* margin: auto; */
+    /* padding-left: 250px; */
 }
 
 input {
@@ -47,41 +60,41 @@ input {
     margin-top: 15px;
     justify-self: center;
     width: 450px;
-    height: 20px;
+    /* height: 20px; */
     background-color: rgba(121, 118, 118, 0.176);
     color: black;
-    padding: 15px;
+    /* padding: 15px; */
 }
 
 .name-input {
-    grid-row: 2/3;
-    grid-column: 1/2;
-}
-
-.price-input {
     grid-row: 3/4;
     grid-column: 1/2;
 }
 
-.image-input {
+.price-input {
     grid-row: 4/5;
     grid-column: 1/2;
 }
 
-.description-input {
+.image-input {
     grid-row: 5/6;
     grid-column: 1/2;
 }
 
-.submit-button {
+.description-input {
     grid-row: 6/7;
+    grid-column: 1/2;
+}
+
+.submit-button {
+    grid-row: 7/8;
     grid-column: 1/2;
     /* margin: auto; */
     width: 450px;
     height: 50px;
     justify-self: center;
     border-radius: 20px;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     background-color: rgb(104, 184, 104);
     color: white;
     border-color: white;

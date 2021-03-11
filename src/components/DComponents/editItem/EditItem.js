@@ -2,8 +2,6 @@ import React, { useState, useRef } from "react";
 import "./EditItem.css";
 import DisplayItems from "../displayItems/DisplayItems";
 
-
-
 //========================================================================================//
 //========================================================================================//
 
@@ -36,13 +34,13 @@ const prePopulateTextFields = (event) => {
     });
 };
 const onButtonSubmit = (click) => {
-    click.preventDefault()
-    console.log(click.target.value)
+    click.preventDefault();
+    console.log(click.target.value);
     // console.log("uyess");
-    console.log(tempName)
-    console.log(tempPrice)
-    console.log(tempImageLink)
-    console.log(tempDescription)
+    console.log(tempName);
+    console.log(tempPrice);
+    console.log(tempImageLink);
+    console.log(tempDescription);
 };
 
 //========================================================================================//
@@ -53,69 +51,68 @@ return (
         Edit Item
     </button>
 
-    <div className="overall-item-container">
+    <div >
         {showEditControls ? (
-        <form className="edit-item-container">
+        <div className="overall-item-container">
+            <form className="edit-item-container">
             <h3 className="edit-control-header">Edit Item</h3>
             <div className="select-options">
-            <select onChange={prePopulateTextFields}>
+                <select onChange={prePopulateTextFields}>
                 <option>...</option>
                 {props.items.map((value) => {
-                return (
+                    return (
                     <option value={value.name} key={value.id}>
-                    {value.name}
+                        {value.name}
                     </option>
-                );
+                    );
                 })}
-            </select>
+                </select>
             </div>
 
             <input
-            className="name-input"
-            defaultValue={tempName}
-            placeholder="Name"
-            type="text"
-            onChange={(event)=>{
-                setTempName(event.target.value)
-                console.log(event.target.value)
-                }
-            }
+                className="name-input"
+                defaultValue={tempName}
+                placeholder="Name"
+                type="text"
+                onChange={(event) => {
+                setTempName(event.target.value);
+                console.log(event.target.value);
+                }}
             />
 
             <input
-            className="price-input"
-            defaultValue={tempPrice}
-            placeholder="Price"
-            onChange={(event)=>{
-                setTempPrice(event.target.value)
-                console.log(event.target.value)
-                }
-            }
+                className="price-input"
+                defaultValue={tempPrice}
+                placeholder="Price"
+                onChange={(event) => {
+                setTempPrice(event.target.value);
+                console.log(event.target.value);
+                }}
             />
 
             <input
-            className="image-input"
-            defaultValue={tempImageLink}
-            placeholder="Image Link"
+                className="image-input"
+                defaultValue={tempImageLink}
+                placeholder="Img Url"
             />
 
             <input
-            className="description-input"
-            defaultValue={tempDescription}
-            placeholder="Description"
+                className="description-input"
+                defaultValue={tempDescription}
+                placeholder="Description"
             />
 
             <button className="submit-button" onClick={onButtonSubmit}>
-            Submit
+                Submit
             </button>
-            <hr />
-            <div>
+
+            </form>
+            <div className="display-items"></div>
             <DisplayItems
-                items={props.items}
-                prePopulateTextFields={prePopulateTextFields}
+            items={props.items}
+            prePopulateTextFields={prePopulateTextFields}
             />
-            </div>
-        </form>
+        </div>
         ) : null}
     </div>
     </div>
