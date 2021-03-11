@@ -1,0 +1,20 @@
+* {
+box-sizing: border-box;
+    background-color: #CCCCCC;
+
+}
+.App {
+    width: 80%;
+    height: auto;
+    margin: 50px auto;
+    background-color: white;
+}
+
+.control-container {
+    display: inline-block;
+    width: 70%;
+    background-color: red;
+}
+
+
+

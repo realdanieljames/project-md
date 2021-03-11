@@ -1,0 +1,15 @@
+* {
+   box-sizing: border-boxl
+}
+
+img {
+    width: 58px;
+    border: 2px solid white;
+}
+
+p {
+    margin: 0px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #646464;
+}

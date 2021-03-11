@@ -4,6 +4,7 @@ import "./App.css";
 
 
 import EditItem from "./components/DComponents/editItem/EditItem";
+import DisplayItems from "./components/MComponents/displayItems/DisplayItems";
 
 class App extends Component {
   state = {
@@ -20,7 +21,7 @@ class App extends Component {
         id: "#2",
         name: "Spinach Bunch",
         price: "$4.99",
-        imageLink: `https://pcdn.columbian.com/wp-content/uploads/2020/06/0619_met_spinach-1226x0-c-default.jpg`,
+        imageLink: `https://5.imimg.com/data5/GL/JT/UT/SELLER-90542357/fresh-spinach-500x500.jpg`,
         description: "Spinach is a leafy green flowering plant native to central and western Asia."
       },
       {
@@ -50,8 +51,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Grocery Store Catalogue</h1>
-        <EditItem items={this.state.items} />
+        {/* <EditItem items={this.state.items} /> */}
+        <div className="control-container">control-container</div>
+        <DisplayItems items={this.state.items}/>
       </div>
     );
   }
