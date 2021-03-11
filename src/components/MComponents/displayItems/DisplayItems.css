@@ -28,6 +28,7 @@
 .close-item-display-button {
     display: grid;
     grid-row: 2/3;
+    text-align: center;
     grid-column: 3/4;
     width: 20px;
     justify-self: end;

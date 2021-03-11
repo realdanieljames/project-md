@@ -3,10 +3,6 @@ import "./App.css";
 
 
 
-
-
-
-
 import EditItem from "./components/DComponents/editItem/EditItem";
 
 class App extends Component {

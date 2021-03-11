@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./EditItem.css";
-import DisplayItems from "../displayItems/DisplayItems";
+import DisplayItems from "../../MComponents/displayItems/DisplayItems";
 
 //========================================================================================//
 //========================================================================================//
@@ -58,7 +58,7 @@ return (
             <h3 className="edit-control-header">Edit Item</h3>
             <div className="select-options">
                 <select onChange={prePopulateTextFields}>
-                <option>...</option>
+                <option>Select A Product</option>
                 {props.items.map((value) => {
                     return (
                     <option value={value.name} key={value.id}>
