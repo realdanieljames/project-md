@@ -8,7 +8,7 @@ import "./DisplayItems.css";
 const DisplayItems = (props) => {
 
    const  deleteCard=()=>{
-
+    
 
     }
 console.log(props);

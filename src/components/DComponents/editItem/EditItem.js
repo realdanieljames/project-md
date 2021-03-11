@@ -1,21 +1,18 @@
 import React, { useState, useRef } from "react";
-
 import "./EditItem.css";
-
 import DisplayItems from "../displayItems/DisplayItems";
+
+
 
 //========================================================================================//
 //========================================================================================//
 
 const EditControlComponent = (props) => {
 const [showEditControls, setShowEditControls] = useState(false);
-let [tempName, setTempName] =useState('')
-let [tempPrice, setTempPrice] =useState('')
-let [tempImageLink, setTempImageLink] =useState('')
-let [tempDescription, setTempDescription] =useState('')
-
-
-
+let [tempName, setTempName] = useState("");
+let [tempPrice, setTempPrice] = useState("");
+let [tempImageLink, setTempImageLink] = useState("");
+let [tempDescription, setTempDescription] = useState("");
 
 //========================================================================================//
 //========================================================================================//
@@ -29,23 +26,24 @@ const openEditControlComponent = () => {
 };
 
 const prePopulateTextFields = (event) => {
-    console.log(event.target.value)
-    props.items.map((value)=>{
-        if(event.target.value === value.name){
-            setTempName(value.name)
-            setTempPrice(value.price)
-            setTempImageLink(value.imageLink)
-            setTempDescription(value.description)
-        }
-
-        
-
-    })
-
+    props.items.map((value) => {
+    if (event.target.value === value.name) {
+        setTempName(value.name);
+        setTempPrice(value.price);
+        setTempImageLink(value.imageLink);
+        setTempDescription(value.description);
+    }
+    });
 };
-
-
-
+const onButtonSubmit = (click) => {
+    click.preventDefault()
+    console.log(click.target.value)
+    // console.log("uyess");
+    console.log(tempName)
+    console.log(tempPrice)
+    console.log(tempImageLink)
+    console.log(tempDescription)
+};
 
 //========================================================================================//
 //========================================================================================//
@@ -59,30 +57,64 @@ return (
         {showEditControls ? (
         <form className="edit-item-container">
             <h3 className="edit-control-header">Edit Item</h3>
-            <div  className='select-options'>
-            <select
-             onChange={prePopulateTextFields}
-             >
+            <div className="select-options">
+            <select onChange={prePopulateTextFields}>
                 <option>...</option>
                 {props.items.map((value) => {
-                return <option value={value.name} key={value.id}>{value.name}</option>;
+                return (
+                    <option value={value.name} key={value.id}>
+                    {value.name}
+                    </option>
+                );
                 })}
             </select>
             </div>
 
-            <input className="name-input" defaultValue={tempName} placeholder="Name" type='text'/>
+            <input
+            className="name-input"
+            defaultValue={tempName}
+            placeholder="Name"
+            type="text"
+            onChange={(event)=>{
+                setTempName(event.target.value)
+                console.log(event.target.value)
+                }
+            }
+            />
 
-            <input  className="price-input" defaultValue={tempPrice} placeholder="Price"/>
+            <input
+            className="price-input"
+            defaultValue={tempPrice}
+            placeholder="Price"
+            onChange={(event)=>{
+                setTempPrice(event.target.value)
+                console.log(event.target.value)
+                }
+            }
+            />
 
-            <input className="image-input" defaultValue={tempImageLink} placeholder="Image Link"/>
+            <input
+            className="image-input"
+            defaultValue={tempImageLink}
+            placeholder="Image Link"
+            />
 
-            <input className="description-input" defaultValue={tempDescription} placeholder="Description"/>
+            <input
+            className="description-input"
+            defaultValue={tempDescription}
+            placeholder="Description"
+            />
 
-
-
-            <button className="submit-button">Submit</button>
-
-            <DisplayItems items={props.items}/>
+            <button className="submit-button" onClick={onButtonSubmit}>
+            Submit
+            </button>
+            <hr />
+            <div>
+            <DisplayItems
+                items={props.items}
+                prePopulateTextFields={prePopulateTextFields}
+            />
+            </div>
         </form>
         ) : null}
     </div>

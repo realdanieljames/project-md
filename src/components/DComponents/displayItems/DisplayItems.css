@@ -2,8 +2,9 @@
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto;
+    margin-top: 40px;
     /* border: 2px solid black; */
-    margin: auto;
+    /* margin: auto; */
     width: 500px;
     /* height: 700px; */
 }

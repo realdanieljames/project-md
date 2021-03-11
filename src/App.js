@@ -1,6 +1,12 @@
 import { Component } from "react";
 import "./App.css";
-import DisplayItems from "./components/DComponents/displayItems/DisplayItems";
+
+
+
+
+
+
+
 import EditItem from "./components/DComponents/editItem/EditItem";
 
 class App extends Component {
@@ -10,7 +16,8 @@ class App extends Component {
         id: "#01",
         name: "Golden Apple Bag",
         price: "$7.99",
-        imageLink: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.fortmyersgroceryservice.com%2Fuploads%2F1%2F5%2F5%2F4%2F1554554%2Fs257261684267286_p6602_i3_w500.jpeg&f=1&nofb=1",
+        imageLink:
+          "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.fortmyersgroceryservice.com%2Fuploads%2F1%2F5%2F5%2F4%2F1554554%2Fs257261684267286_p6602_i3_w500.jpeg&f=1&nofb=1",
         description: "This Item represents the first (1) item on the list",
       },
       {
@@ -30,17 +37,11 @@ class App extends Component {
     ],
   };
 
-
-
-
   render() {
     return (
       <div className="App">
         <h1>Grocery Store Catalogue</h1>
-        <EditItem
-          items={this.state.items}
-        />
-        {/* <DisplayItems items={this.state.items} /> */}
+        <EditItem items={this.state.items} />
       </div>
     );
   }
