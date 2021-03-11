@@ -1,0 +1,61 @@
+.items-container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    /* border: 2px solid black; */
+    margin: auto;
+    width: 500px;
+    /* height: 700px; */
+}
+
+.single-item-container {
+    display: grid;
+    justify-content: center;
+    margin: 10px;
+    border: 2px solid black;
+    width: 400px;
+    height: 550px;
+}
+
+.close-item-display-button {
+    display: grid;
+    justify-content: end;
+    width: 50px;
+    margin-left: 100%;
+    height: 50px;
+    /* position: relative; */
+}
+
+.item-image {
+    display: grid;
+    justify-content: center;
+    border: red solid 2px;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    /* margin-left: 35%; */
+}
+
+.item-name {
+    /* border: solid blue 2px; */
+    width: auto;
+    text-align: center;
+    height: auto;
+    display: grid;
+    margin: auto;
+    justify-self: center;
+}
+
+.item-price {
+    /* border: green solid 2px; */
+    text-align: center;
+    font-weight: bold;
+}
+
+.item-description {
+    border-bottom: black 5px solid;
+    margin-bottom: 20px;
+}

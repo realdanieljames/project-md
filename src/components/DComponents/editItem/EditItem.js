@@ -1,15 +1,22 @@
-import React, { useState } from "react";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import React, { useState, useRef } from "react";
+
 import "./EditItem.css";
+
+import DisplayItems from "../displayItems/DisplayItems";
 
 //========================================================================================//
 //========================================================================================//
 
 const EditControlComponent = (props) => {
 const [showEditControls, setShowEditControls] = useState(false);
+let [tempName, setTempName] =useState('')
+let [tempPrice, setTempPrice] =useState('')
+let [tempImageLink, setTempImageLink] =useState('')
+let [tempDescription, setTempDescription] =useState('')
 
-console.log(props);
+
+
+
 //========================================================================================//
 //========================================================================================//
 
@@ -22,8 +29,23 @@ const openEditControlComponent = () => {
 };
 
 const prePopulateTextFields = (event) => {
-    console.log(event.target.value);
+    console.log(event.target.value)
+    props.items.map((value)=>{
+        if(event.target.value === value.name){
+            setTempName(value.name)
+            setTempPrice(value.price)
+            setTempImageLink(value.imageLink)
+            setTempDescription(value.description)
+        }
+
+        
+
+    })
+
 };
+
+
+
 
 //========================================================================================//
 //========================================================================================//
@@ -33,52 +55,37 @@ return (
         Edit Item
     </button>
 
-    {showEditControls ? (
+    <div className="overall-item-container">
+        {showEditControls ? (
         <form className="edit-item-container">
-        <h3 className="edit-control-header">Edit Item</h3>
-        <div>
-            <select onChange={prePopulateTextFields}>
-            <option>...</option>
-            {props.items.map((value) => {
-                return <option value={value.name}>{value.name}</option>;
-            })}
+            <h3 className="edit-control-header">Edit Item</h3>
+            <div  className='select-options'>
+            <select
+             onChange={prePopulateTextFields}
+             >
+                <option>...</option>
+                {props.items.map((value) => {
+                return <option value={value.name} key={value.id}>{value.name}</option>;
+                })}
             </select>
-        </div>
-        
+            </div>
 
-        <TextField
+            <input className="name-input" defaultValue={tempName} placeholder="Name" type='text'/>
 
-            variant="filled"
-            margin="normal"
-            defaultValue={"remember"}
-            type="text"
-            className="name-input"
-            placeholder="Name"
-        />
-        <TextField
+            <input  className="price-input" defaultValue={tempPrice} placeholder="Price"/>
 
-            variant="filled"
-            margin="normal"
-            className="price-input"
-            placeholder="Price"
-        />
-        <TextField
-            variant="filled"
-            margin="normal"
-            className="image-input"
-            placeholder="Image"
-        />
-        <TextField
-            variant="filled"
-            margin="normal"
-            className="description-input"
-            placeholder="Description"
-        />
+            <input className="image-input" defaultValue={tempImageLink} placeholder="Image Link"/>
+
+            <input className="description-input" defaultValue={tempDescription} placeholder="Description"/>
 
 
-        <Button className="submit-button" variant="contained">Submit</Button>
+
+            <button className="submit-button">Submit</button>
+
+            <DisplayItems items={props.items}/>
         </form>
-    ) : null}
+        ) : null}
+    </div>
     </div>
 );
 };
