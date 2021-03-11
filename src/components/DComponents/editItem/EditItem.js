@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./EditItem.css";
 import DisplayItems from "../../MComponents/displayItems/DisplayItems";
+import AddItem from "../addItem/AddItem";
 
 //========================================================================================//
 //========================================================================================//
@@ -11,6 +12,10 @@ let [tempName, setTempName] = useState("");
 let [tempPrice, setTempPrice] = useState("");
 let [tempImageLink, setTempImageLink] = useState("");
 let [tempDescription, setTempDescription] = useState("");
+let [
+    showSelectOptionsDropdownDiv,
+    setShowSelectOptionsDropdownDiv,
+] = useState(true);
 
 //========================================================================================//
 //========================================================================================//
@@ -43,6 +48,27 @@ const onButtonSubmit = (click) => {
     console.log(tempDescription);
 };
 
+const selectOptionsDropdownDiv = (
+    <div className="select-options">
+    <select onChange={prePopulateTextFields}>
+        <option>Select A Product</option>
+        {props.items.map((value) => {
+        return (
+            <option value={value.name} key={value.id}>
+            {value.name}
+            </option>
+        );
+        })}
+    </select>
+    </div>
+);
+
+const clickAddButtonTab =()=>{
+    setShowSelectOptionsDropdownDiv(false)
+}
+const clickEditButtonTab =()=>{
+    setShowSelectOptionsDropdownDiv(true)
+}
 //========================================================================================//
 //========================================================================================//
 return (
@@ -51,12 +77,22 @@ return (
         Edit Item
     </button>
 
-    <div >
+    <div>
         {showEditControls ? (
         <div className="overall-item-container">
             <form className="edit-item-container">
-            <h3 className="edit-control-header">Edit Item</h3>
-            <div className="select-options">
+            <nav className="container-navbar">
+                <div className="add-control-header" onClick={clickAddButtonTab}>
+                <h3>ADD PRODUCT</h3>
+                </div>
+                <div className="edit-control-header" onClick={clickEditButtonTab}>
+                <h3>EDIT PRODUCT</h3>
+                </div>
+            </nav>
+            {showSelectOptionsDropdownDiv ? selectOptionsDropdownDiv: null}
+           
+
+            {/* <div className="select-options">
                 <select onChange={prePopulateTextFields}>
                 <option>Select A Product</option>
                 {props.items.map((value) => {
@@ -67,7 +103,7 @@ return (
                     );
                 })}
                 </select>
-            </div>
+            </div> */}
 
             <input
                 className="name-input"
@@ -83,7 +119,7 @@ return (
             <input
                 className="price-input"
                 defaultValue={tempPrice}
-                placeholder="Price"
+                placeholder="Price ($)"
                 onChange={(event) => {
                 setTempPrice(event.target.value);
                 console.log(event.target.value);
@@ -93,7 +129,7 @@ return (
             <input
                 className="image-input"
                 defaultValue={tempImageLink}
-                placeholder="Img Url"
+                placeholder="Image Url"
             />
 
             <input
@@ -103,15 +139,14 @@ return (
             />
 
             <button className="submit-button" onClick={onButtonSubmit}>
-                Submit
+                Save
             </button>
-
             </form>
             <div className="display-items"></div>
-            <DisplayItems
+            {/* <DisplayItems
             items={props.items}
             prePopulateTextFields={prePopulateTextFields}
-            />
+            /> */}
         </div>
         ) : null}
     </div>

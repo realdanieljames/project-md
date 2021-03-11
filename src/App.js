@@ -4,6 +4,7 @@ import "./App.css";
 
 
 import EditItem from "./components/DComponents/editItem/EditItem";
+import AddItem from "./components/DComponents/addItem/AddItem";
 
 class App extends Component {
   state = {
@@ -51,6 +52,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Grocery Store Catalogue</h1>
+        <AddItem items={this.state.items} />
         <EditItem items={this.state.items} />
       </div>
     );
