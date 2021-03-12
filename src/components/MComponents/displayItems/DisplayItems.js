@@ -1,27 +1,68 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./DisplayItems.css";
 import Item from '../item/Item.js'
+import itemContext from '../context/ItemContext.js'
+import IconContext from '../context/IconContext.js'
+import { SearchIcon, SearchOutlined, DeleteOutline } from '@material-ui/icons';
+import { InputBase, IconButton, InputAdornment, TextField } from '@material-ui/core'
+// import { SearchIcon } from '@material-ui/icons'
+const DisplayItems = () => {
 
-const DisplayItems = (props) => {
-    console.log(props.items)
+    const context = useContext(itemContext)
+
+    const [searchTerm, SetSearchTerm] = useState('')
+
+
     return (
         <div className='display-container'>
-            This is a list how abou tnow
-            {props.items.map(item => <Item key={item.id} item={item} />
-                // return (
-                //     <>
-                //         <h1>{item.name}</h1>
-                //         <h1>{item.id}</h1>
-                //         <h1>{item.price}</h1>
-                //         <img src={item.imageLink}></img>
-                //         <h1>{item.description}</h1>
-                //     </>
-                // )
-            )}
+
+            <div className='search-container'>
+                {/* <IconButton >
+                    <SearchOutlined color='secondary' />
+                </IconButton>
+                <InputBase
+                    onChange={(event) => SetSearchTerm(event.target.value)}>
+                </InputBase> */}
+
+                <TextField
+                    style={{ color: 'green', margin: 16, width: 374 }}
+                    size='large'
+                    onChange={(event) => SetSearchTerm(event.target.value)}
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <SearchOutlined style={{color: 'green'}} />
+                            </InputAdornment>
+                        ),
+                    }}
+                />
+                {/* <div className='search-icon'>
+                    <SearchIcon
+                        fontSize="large"
+                        style={{ color: 'green' }} />
+                </div>
+                <input
+                    placeholder='Search'
+                    onChange={(event) => SetSearchTerm(event.target.value)}>
+                </input> */}
+            </div>
+            {context.items
+                .filter(item => {
+                    // If search term is empty, return all items
+                    if (searchTerm === '') {
+                        return item
+                    }
+                    // Return all items that include search term in its name
+                    else if (item.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                        return item
+                    }
+                })
+                // Map All items that qualify the filter above
+                .map(item => <Item key={item.id} item={item} />)}
+            {/* <button className={`${context.items.length < 5}`} >PREVIOUS</button> */}
+            <button class='next'>NEXT</button>
         </div>
     )
-
-
 
 };
 
@@ -30,31 +71,3 @@ export default DisplayItems;
 
 
 
-
-
-
-//     //Daniel code
-//        const  deleteCard=()=>{
-
-
-//         }
-//     console.log(props);
-//     return (
-//         <div className="items-container">
-//         {props.items.map((value) => {
-//             return (
-//             <div key={value.id} className="single-item-container">
-//                 <button className="close-item-display-button"> X</button>
-//                 <img className="item-image" src={value.imageLink}></img>
-//                 <div className="item-name">{value.name}</div>
-//                 {/* <div className="item-id">{value.id}</div> */}
-//                 <div className="item-price">{value.price}</div>
-//                 <div className="item-description">{value.description}</div>
-//             </div>
-//             );
-//         })}
-//         </div>
-//     );
-// };
-
-// export default DisplayItems;

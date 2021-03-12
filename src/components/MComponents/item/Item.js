@@ -1,35 +1,32 @@
-
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import './item.css'
-
+import itemContext from '../context/ItemContext.js'
+import '../../../../puplic/close-icon.svg'
+// import CloseIcon from '@material-ui/icons/Close';
 
 
 
 export default function Item(props) {
-    console.log('props',props)
-    const [array, setArray] = useState(props.item)
 
-    const handleDeleteItem = (id) => {
-        // console.log('props',props)
-        console.log('outside setArray',props.item)
-        setArray((prevState)=>{
-            console.log('inside setArray',props.item)
-            console.log('prevState',prevState)
-        })
-    }
+    // pass fucntion from App.js using context
+    const context = useContext(itemContext)
+    const handleDeleteItem = context.handleDeleteItem
 
-    console.log(props.item.name)
+    // pass a single item object from DisplayItems using props
     const { id, name, price, imageLink, description } = props.item
+
     return (
-        <div>
-            <img src={imageLink}></img>
-            <div className='description'>
-                <h2>{name}</h2>
-                <p>{id}</p>
-                <p>{description}</p>
+        <div className='item-wrapper'>
+            <img className='item-img' src={imageLink}></img>
+            <div className='description-wrapper'>
+                <p className='item-name'>{name}</p>
+                <p className='item-description'># {id} </p>
+                <p className='item-description'>{description}</p>
             </div>
-            <h1 className='price'>{price}</h1>
-            <button onClick={() => handleDeleteItem(id)}>X</button>
+            <h1 className='item-price'>{price}</h1>
+
+            {/* <button className='close-btn' onClick={() => handleDeleteItem(id)}><CloseIcon fontSize="small" color="MuiIcon-colorAction"/></button> */}
+            <button className='close-btn' onClick={() => handleDeleteItem(id)}>X</button>
         </div>
     )
 }

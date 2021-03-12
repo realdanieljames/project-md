@@ -1,19 +1,36 @@
 * {
 box-sizing: border-box;
-    background-color: #CCCCCC;
+background-color: white;
 
 }
 .App {
-    width: 80%;
-    height: auto;
-    margin: 50px auto;
     background-color: white;
+}
+
+.grant-container {
+    width: 70%;
+    height: 1000px;
+    margin: 50px auto;
+    background-color: blue;
+    display: grid;
+    grid-template-areas: 'ctl ctl lst';
 }
 
 .control-container {
     display: inline-block;
-    width: 70%;
+    width: 600px;
+    height: 800px;
     background-color: red;
+    display: grid;
+    grid-area: ctl;
+    
+    /* float: left */
+}
+
+.list-container {
+    display: grid;
+    grid-area: lst;
+    /* float: left */
 }
 
 

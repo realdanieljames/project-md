@@ -1,5 +1,19 @@
 * {
-   box-sizing: border-boxl
+   box-sizing: border-box;
+   margin: 0px;
+   background-color: #F2F3F2 ;
+}
+
+.item-wrapper {
+    display: grid;
+    grid-template-areas: "ft ft ft ft";
+    margin: 16px
+}
+
+.description-wrapper {
+    display: grid;
+    grid-area: "ft";
+    margin-left: 8px;
 }
 
 img {
@@ -7,9 +21,41 @@ img {
     border: 2px solid white;
 }
 
-p {
-    margin: 0px;
-    font-size: 14px;
+.item-name {
     line-height: 16px;
-    color: #646464;
+    font-size: 14px;
+    color: #2D3931;
+
+}
+
+.item-price {
+    display: grid;
+    grid-area: "ft";
+    font-size: 14px;
+    margin-left: 8px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #2D3931;
+    
+}
+
+.item-description {
+    line-height: 16px;
+    font-size: 12px;
+    color: #8C9395;
+    width: 222px;
+    
+}
+
+.close-btn {
+    display: grid;
+    grid-area: "ft";
+    margin-left: 16px;
+    border-style: none;
+    height: 20px;
+    width: 20px
+}
+
+.action {
+    color: red
 }
