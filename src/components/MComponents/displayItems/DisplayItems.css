@@ -5,16 +5,17 @@
     grid-template-rows: repeat(7, 1fr);
     grid-column: 2/3;
     grid-row: 1/2;
+    background-color: rgba(121, 118, 118, 0.176);
     /* margin-top: 40px; */
     /* border: 2px solid black; */
     /* margin: auto; */
-    width: 400px;
+    /* width: 400px; */
     /* height: 700px; */
 }
 
 .single-item-container {
     display: grid;
-    background-color: rgba(121, 118, 118, 0.176);
+    /* background-color: rgba(121, 118, 118, 0.176); */
     grid-template-columns: 1fr 3fr 1fr;
     grid-template-rows: repeat(3, 1fr);
     margin-left: 10px;

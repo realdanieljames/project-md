@@ -14,6 +14,7 @@ const DisplayItems = (props) => {
 // console.log(props);
 return (
     <div className="items-container">
+        <input placeholder='search'/>
     {props.items.map((value) => {
         return (
         <div key={value.id} className="single-item-container">
