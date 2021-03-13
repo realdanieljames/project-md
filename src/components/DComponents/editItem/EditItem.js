@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
+import { v4 as uuidv4 } from "uuid";
 import "./EditItem.css";
 import DisplayItems from "../../MComponents/displayItems/DisplayItems";
-import AddItem from "../addItem/AddItem";
+import logo from "./EnergyFoodLogo.png";
 
 //========================================================================================//
 //========================================================================================//
@@ -43,22 +44,22 @@ const prePopulateTextFields = (event) => {
 };
 const onButtonSubmit = (click) => {
     click.preventDefault();
-    console.log(click)
+    console.log(click);
     console.log(props.items);
-    const addedItem =  {
-        id: "",
-        name: tempName,
-        price: tempPrice,
-        imageLink: tempImageLink,
-        description: tempDescription,
-    }
+    const addedItem = {
+    id: uuidv4(),
+    name: tempName,
+    price: tempPrice,
+    imageLink: tempImageLink,
+    description: tempDescription,
+    };
     // const newArr =[...props.items, addedItem];
-    const newArr =[...tempProps, addedItem];
-    setTempProps(newArr)
-    console.log(newArr)
-    newArr.map((value)=>{
-        console.log(value)
-    })
+    const newArr = [...tempProps, addedItem];
+    setTempProps(newArr);
+    console.log(newArr);
+    newArr.map((value) => {
+    console.log(value);
+    });
     // newArr.push(addedItem)
 
     // console.log(newArr)
@@ -70,7 +71,7 @@ const onButtonSubmit = (click) => {
     // console.log(tempPrice);
     // console.log(tempImageLink);
     // console.log(tempDescription);
-}
+};
 
 const selectOptionsDropdownDiv = (
     <div className="select-options">
@@ -101,14 +102,23 @@ const clickEditButtonTab = (e) => {
 //========================================================================================//
 return (
     <div>
-    <button className="edit-item-button" onClick={openEditControlComponent}>
+    <div className="open-buttons">
+        <button className="edit-item-button" onClick={openEditControlComponent}>
+        Add Product
+        </button>
+        <button className="edit-item-button" onClick={openEditControlComponent}>
         Edit Item
-    </button>
+        </button>
+    </div>
 
     <div>
         {showEditControls ? (
         <div className="overall-item-container">
             <form className="edit-item-container">
+            <div className="form-heading">
+                <img className="logo" src={logo} />
+                <h2>Energy Food</h2>
+            </div>
             <nav className="container-navbar">
                 <div className="add-control-header" onClick={clickAddButtonTab}>
                 <h3>ADD PRODUCT</h3>
