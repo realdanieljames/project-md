@@ -17,7 +17,7 @@ const AddItem = (props) => {
 return (
     <div>
     <button
-        className="add-item-button"
+        className="edit-item-button"
         onClick={openAddControlComponent}
     >
         Add Product

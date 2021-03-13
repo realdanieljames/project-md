@@ -16,6 +16,8 @@ let [
     showSelectOptionsDropdownDiv,
     setShowSelectOptionsDropdownDiv,
 ] = useState(true);
+let [submitButtonDescription, setSubmitButtonDescription] = useState("SAVE");
+let [tempProps, setTempProps] = useState([...props.items]);
 
 //========================================================================================//
 //========================================================================================//
@@ -29,7 +31,8 @@ const openEditControlComponent = () => {
 };
 
 const prePopulateTextFields = (event) => {
-    props.items.map((value) => {
+    // props.items.map((value) => {
+    tempProps.map((value) => {
     if (event.target.value === value.name) {
         setTempName(value.name);
         setTempPrice(value.price);
@@ -40,19 +43,41 @@ const prePopulateTextFields = (event) => {
 };
 const onButtonSubmit = (click) => {
     click.preventDefault();
-    console.log(click.target.value);
+    console.log(click)
+    console.log(props.items);
+    const addedItem =  {
+        id: "",
+        name: tempName,
+        price: tempPrice,
+        imageLink: tempImageLink,
+        description: tempDescription,
+    }
+    // const newArr =[...props.items, addedItem];
+    const newArr =[...tempProps, addedItem];
+    setTempProps(newArr)
+    console.log(newArr)
+    newArr.map((value)=>{
+        console.log(value)
+    })
+    // newArr.push(addedItem)
+
+    // console.log(newArr)
+
+    // console.log(tempProps);
+    // console.log(click.target.value);
     // console.log("uyess");
-    console.log(tempName);
-    console.log(tempPrice);
-    console.log(tempImageLink);
-    console.log(tempDescription);
-};
+    // console.log(tempName);
+    // console.log(tempPrice);
+    // console.log(tempImageLink);
+    // console.log(tempDescription);
+}
 
 const selectOptionsDropdownDiv = (
     <div className="select-options">
     <select onChange={prePopulateTextFields}>
         <option>Select A Product</option>
-        {props.items.map((value) => {
+        {/* {props.items.map((value) => { */}
+        {tempProps.map((value) => {
         return (
             <option value={value.name} key={value.id}>
             {value.name}
@@ -63,12 +88,15 @@ const selectOptionsDropdownDiv = (
     </div>
 );
 
-const clickAddButtonTab =()=>{
-    setShowSelectOptionsDropdownDiv(false)
-}
-const clickEditButtonTab =()=>{
-    setShowSelectOptionsDropdownDiv(true)
-}
+const clickAddButtonTab = () => {
+    setShowSelectOptionsDropdownDiv(false);
+    setSubmitButtonDescription("ADD");
+};
+const clickEditButtonTab = (e) => {
+    e.preventDefault();
+    setShowSelectOptionsDropdownDiv(true);
+    setSubmitButtonDescription("SAVE");
+};
 //========================================================================================//
 //========================================================================================//
 return (
@@ -85,12 +113,18 @@ return (
                 <div className="add-control-header" onClick={clickAddButtonTab}>
                 <h3>ADD PRODUCT</h3>
                 </div>
-                <div className="edit-control-header" onClick={clickEditButtonTab}>
+                <div
+                className="edit-control-header"
+                onClick={clickEditButtonTab}
+                >
                 <h3>EDIT PRODUCT</h3>
                 </div>
             </nav>
-            {showSelectOptionsDropdownDiv ? selectOptionsDropdownDiv: null}
-           
+            {showSelectOptionsDropdownDiv ? (
+                selectOptionsDropdownDiv
+            ) : (
+                <span className="select-options">Add A Product</span>
+            )}
 
             {/* <div className="select-options">
                 <select onChange={prePopulateTextFields}>
@@ -130,23 +164,31 @@ return (
                 className="image-input"
                 defaultValue={tempImageLink}
                 placeholder="Image Url"
+                onChange={(event) => {
+                setTempImageLink(event.target.value);
+                console.log(event.target.value);
+                }}
             />
 
             <input
                 className="description-input"
                 defaultValue={tempDescription}
                 placeholder="Description"
+                onChange={(event) => {
+                setTempDescription(event.target.value);
+                console.log(event.target.value);
+                }}
             />
 
             <button className="submit-button" onClick={onButtonSubmit}>
-                Save
+                {submitButtonDescription}
             </button>
             </form>
             <div className="display-items"></div>
-            {/* <DisplayItems
-            items={props.items}
+            <DisplayItems
+            items={tempProps}
             prePopulateTextFields={prePopulateTextFields}
-            /> */}
+            />
         </div>
         ) : null}
     </div>
