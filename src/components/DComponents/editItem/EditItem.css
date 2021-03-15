@@ -112,6 +112,7 @@
 select {
     /* padding: 50px; */
     width: 360px;
+    padding-left: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
     /* height: 50px; */

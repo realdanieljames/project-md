@@ -8,8 +8,9 @@ import logo from "./EnergyFoodLogo.png";
 //========================================================================================//
 
 const EditControlComponent = (props) => {
-const [showEditControls, setShowEditControls] = useState(false);
-const [showAddControls, setShowAddControls] = useState(false);
+const [showEditControls, setShowEditControls] = useState(true);
+const [showAddControls, setShowAddControls] = useState(true);
+let [tempID, setTempID] = useState("");
 let [tempName, setTempName] = useState("");
 let [tempPrice, setTempPrice] = useState("");
 let [tempImageLink, setTempImageLink] = useState("");
@@ -53,34 +54,29 @@ const openAddControlComponent = () => {
 const prePopulateTextFields = (event) => {
     console.log(event.target.value);
 
-    // props.items.map((value) => {
-
-    // chooseItemToEdit()
     tempProps.map((value) => {
+        console.log(tempProps)
     if (event.target.value === value.name) {
+        setTempID(value.id)
         setTempName(value.name);
         setTempPrice(value.price);
         setTempImageLink(value.imageLink);
         setTempDescription(value.description);
     }
+
+
     });
 };
 
 //========================================================================================//
 
-// const chooseItemToEdit =(click)=>{
-//     console.log(click)
-//     tempProps.map((value)=>{console.log(value)})
-// }
 
-//========================================================================================//
 const onButtonSubmit = (click) => {
     click.preventDefault();
-    // console.log(click);
-    // console.log(props.items);
+
     if (addProductTab === true) {
     const addedItem = {
-        id: uuidv4(),
+        id: tempID,
         name: tempName,
         price: tempPrice,
         imageLink: tempImageLink,
@@ -90,33 +86,42 @@ const onButtonSubmit = (click) => {
     const newArr = [...tempProps, addedItem];
     setTempProps(newArr);
     console.log(newArr);
-    // newArr.map((value) => {
-    // console.log(value);
-    // });
+
     }
-
     if (editProductTab === true) {
-    // console.log(click)
 
-    let editedItem = {
-        id: "",
+        onEditButtonSubmit(tempID)
+
+        };
+
+};
+
+
+//========================================================================================//
+
+const onEditButtonSubmit =async (id)=>{
+const arr =[tempProps.map((value)=>{
+    if(value.id === id){
+        return {
+        id: id,
         name: tempName,
         price: tempPrice,
         imageLink: tempImageLink,
         description: tempDescription,
-    };
-    // };
-    tempProps.map((value) => {
-        if (value.name !== tempName) {
-        setTempProps([(editedItem.name = tempName)]);
-        // editedItem.name=tempName
+
         }
-        console.log(value);
-    });
-    console.log(editedItem);
-    return editedItem;
     }
-};
+    else {
+
+        return value
+    }
+})]
+// console.log(arr[0])
+// console.log(tempProps)
+setTempProps(arr[0])
+}
+ 
+
 //========================================================================================//
 
 const selectOptionsDropdownDiv = (
@@ -124,7 +129,7 @@ const selectOptionsDropdownDiv = (
     <select onChange={prePopulateTextFields}>
         <option>Select A Product</option>
         {/* {props.items.map((value) => { */}
-        {tempProps.map((value) => {
+        {tempProps.map((value) => { 
         return (
             <option value={value.name} key={value.id}>
             {value.name}
@@ -157,7 +162,7 @@ const switchTabBorderBottomStyle = () => {
     let styleObj = {};
     if (addProductTab === true) {
     styleObj = {
-        borderBottomColor: "yellow",
+        borderBottomColor: "white",
     };
     } else {
     styleObj = {};
@@ -168,14 +173,14 @@ const switchTabBorderBottomStyle = () => {
 //========================================================================================//
 return (
     <div>
-    <div className="open-buttons">
+    {/* <div className="open-buttons">
         <button className="edit-item-button" onClick={openAddControlComponent}>
         Add Product
         </button>
         <button className="edit-item-button" onClick={openEditControlComponent}>
         Edit Item
         </button>
-    </div>
+    </div> */}
 
     <div>
         {showEditControls || showAddControls ? (
@@ -215,7 +220,7 @@ return (
                 type="text"
                 onChange={(event) => {
                 setTempName(event.target.value);
-                console.log(event.target.value);
+
                 }}
             />
 
@@ -225,7 +230,7 @@ return (
                 placeholder="Price ($)"
                 onChange={(event) => {
                 setTempPrice(event.target.value);
-                console.log(event.target.value);
+
                 }}
             />
 
@@ -235,7 +240,7 @@ return (
                 placeholder="Image Url"
                 onChange={(event) => {
                 setTempImageLink(event.target.value);
-                console.log(event.target.value);
+
                 }}
             />
 
@@ -245,7 +250,7 @@ return (
                 placeholder="Description"
                 onChange={(event) => {
                 setTempDescription(event.target.value);
-                console.log(event.target.value);
+
                 }}
             />
 
