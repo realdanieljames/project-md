@@ -77,23 +77,30 @@ class App extends Component {
         description: "A root vegetable, usually orange in color.",
       },
     ],
-    totalPages: [],
+    pageButtons: [],
     startIndex: 0,
+
   };
 
   componentDidMount = () => {
     let { items } = this.state
     // Get total pages base on array length
-    let pages = Math.ceil(items.length / 5)
-    // Create an array of number base on total pages
+    let totalPages = Math.ceil(items.length / 5)
+
+    // Create an array of pages base on total pages, set last page to be active
     let arr = []
-    for (let i = 1; i <= pages; i++) {
-      arr.push(i)
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === totalPages) {
+        arr.push({ number: i, isActive: true })
+      } else {
+        arr.push({ number: i, isActive: false })
+      }
     }
-    // Set array in the state to match the new array
+    //Set startIndex tobe the startIndex of the last page
     this.setState({
       ...this.state,
-      totalPages: arr
+      pageButtons: arr,
+      startIndex: totalPages * 5 - 5
     })
   }
 
@@ -108,11 +115,52 @@ class App extends Component {
   }
 
   handleClickNext = () => {
-    console.log('next')
+    this.setState((prevState) => {
+      return {
+        ...this.state,
+        startIndex: prevState.startIndex + 5,
+      }
+    })
   }
-  handleClickPrevious = () => {
-    console.log('previous')
 
+
+  handleClickPrevious = () => {
+    // If startIndex = 0, remain 0
+    if (this.state.startIndex === 0) {
+      this.setState({
+        ...this.state,
+        startIndex: 0
+      })
+    } else {
+      // If startIndex != 0, jump 5 index previous
+      this.setState((prevState) => {
+        return {
+          ...this.state,
+          startIndex: prevState.startIndex - 5
+        }
+      })
+    }
+
+
+  }
+
+  handleChangePageNumber = (item) => {
+    let copyPageButtons = [...this.state.pageButtons]
+    let newPageButtons = copyPageButtons.map(page => {
+      if (page.number === item.number) {
+        page.isActive = true
+        return page
+      } else {
+        page.isActive = false
+        return page
+      }
+    })
+
+    this.setState({
+      ...this.state,
+      startIndex: item.number * 5 - 5,
+      pageButtons: newPageButtons
+    })
   }
 
 
@@ -124,9 +172,11 @@ class App extends Component {
           {/* <EditItem items={this.state.items} /> */}
           <div className="control-container">control-container</div>
           <itemContext.Provider value={{
-            items: this.state.items,
+            state: this.state,
             handleDeleteItem: this.handleDeleteItem,
-            startIndex: this.state.startIndex
+            handleChangePageNumber: this.handleChangePageNumber,
+            handleClickNext: this.handleClickNext,
+            handleClickPrevious: this.handleClickPrevious,
           }}>
             <DisplayItems className="list-container" />
           </itemContext.Provider>

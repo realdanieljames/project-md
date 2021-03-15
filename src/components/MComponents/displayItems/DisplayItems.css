@@ -1,19 +1,27 @@
 
 .display-container {
     display: inline-block;
-    height: 400 px;
-    background-color: #F2F3F2;
+    height: auto;
+    background-color: orange;
+    /* display: grid;
+    grid-template-areas: 
+    '
+    row
+    row
+    row'  */
+    ;
+
 }
 
 .search-container {
     display: grid;
+    grid-area: row;
     grid-template-areas: 'ft ft';
 }
 input {
     width: 371px;
     height: 40px;
     padding-left: 64px;
-    /* margin: 16px; */
     border-radius: 4px;
     border-style: none;
     background-color: white;
@@ -22,12 +30,31 @@ input {
     grid-area:  'ft';
 }
 
-.search-icon {
-    /* width: 371px;
-    height: 40px;
-    border-radius: 4px;
-    background-color: blue;    
+.items-list {
+    background-color: aqua;
     display: grid;
-    grid-area:  'ft';
-    border: 1px solid blue; */
+    grid-area: row;
+}
+.pagination {
+    display: grid;
+    grid-area: row;
+}
+    
+
+.green {
+    background-color: #27AE60;
+    color: white
+}
+
+.inactive {
+    cursor: none;
+    color: red;
+}
+
+.active {
+    color:  #27AE60;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    padding: 8px;
 }
