@@ -22,7 +22,7 @@
 .overall-item-container {
     /* border: red solid 2px; */
     display: grid;
-    grid-template-columns: 3fr 3fr;
+    grid-template-columns: 5fr 3fr;
     grid-template-rows: 1fr;
     width: 900px;
     margin: auto;
@@ -101,12 +101,13 @@
 }
 
 .edit-control-header:hover {
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid rgb(104, 184, 104);
 }
 
-.edit-control-header:focus {
+
+/* .edit-control-header:focus {
     background-color: yellow;
-}
+} */
 
 select {
     /* padding: 50px; */

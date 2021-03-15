@@ -9,6 +9,7 @@ import logo from "./EnergyFoodLogo.png";
 
 const EditControlComponent = (props) => {
 const [showEditControls, setShowEditControls] = useState(false);
+const [showAddControls, setShowAddControls] = useState(false);
 let [tempName, setTempName] = useState("");
 let [tempPrice, setTempPrice] = useState("");
 let [tempImageLink, setTempImageLink] = useState("");
@@ -19,20 +20,42 @@ let [
 ] = useState(true);
 let [submitButtonDescription, setSubmitButtonDescription] = useState("SAVE");
 let [tempProps, setTempProps] = useState([...props.items]);
+let [addProductTab, setAddProductTab] = useState(false);
+let [editProductTab, setEditProductTab] = useState(false);
 
 //========================================================================================//
 //========================================================================================//
 
 const openEditControlComponent = () => {
-    if (showEditControls === true) {
+    if (showEditControls || showAddControls === true) {
     setShowEditControls(false);
+    setShowAddControls(false);
     } else {
     setShowEditControls(true);
+    setShowAddControls(true);
     }
+    clickEditButtonTab();
 };
 
+const openAddControlComponent = () => {
+    if (showAddControls || showEditControls === true) {
+    setShowAddControls(false);
+    setShowEditControls(false);
+    } else {
+    setShowAddControls(true);
+    setShowEditControls(true);
+    }
+    clickAddButtonTab();
+};
+
+//========================================================================================//
+
 const prePopulateTextFields = (event) => {
+    console.log(event.target.value);
+
     // props.items.map((value) => {
+
+    // chooseItemToEdit()
     tempProps.map((value) => {
     if (event.target.value === value.name) {
         setTempName(value.name);
@@ -42,36 +65,62 @@ const prePopulateTextFields = (event) => {
     }
     });
 };
+
+//========================================================================================//
+
+// const chooseItemToEdit =(click)=>{
+//     console.log(click)
+//     tempProps.map((value)=>{console.log(value)})
+// }
+
+//========================================================================================//
 const onButtonSubmit = (click) => {
     click.preventDefault();
-    console.log(click);
-    console.log(props.items);
-    const addedItem = {
-    id: uuidv4(),
-    name: tempName,
-    price: tempPrice,
-    imageLink: tempImageLink,
-    description: tempDescription,
+    // console.log(click);
+    // console.log(props.items);
+    if(addProductTab=== true){
+
+        const addedItem = {
+            id: uuidv4(),
+            name: tempName,
+            price: tempPrice,
+            imageLink: tempImageLink,
+            description: tempDescription,
+        };
+        
+        const newArr = [...tempProps, addedItem];
+        setTempProps(newArr);
+        console.log(newArr);
+        // newArr.map((value) => {
+            // console.log(value);
+            // });
+        }
+
+    if (editProductTab === true) {
+    // console.log(click)
+ 
+    let editedItem = {
+        id:'',
+        name: tempName,
+        price: tempPrice,
+        imageLink: tempImageLink,
+        description: tempDescription,
     };
-    // const newArr =[...props.items, addedItem];
-    const newArr = [...tempProps, addedItem];
-    setTempProps(newArr);
-    console.log(newArr);
-    newArr.map((value) => {
-    console.log(value);
+    // };
+    tempProps.map((value) => {
+        
+       if(value.name !== tempName){
+           setTempProps([ editedItem.name=tempName])
+            // editedItem.name=tempName
+       }
+       console.log(value)
+
     });
-    // newArr.push(addedItem)
-
-    // console.log(newArr)
-
-    // console.log(tempProps);
-    // console.log(click.target.value);
-    // console.log("uyess");
-    // console.log(tempName);
-    // console.log(tempPrice);
-    // console.log(tempImageLink);
-    // console.log(tempDescription);
+    console.log(editedItem)
+    return editedItem
+    }
 };
+//========================================================================================//
 
 const selectOptionsDropdownDiv = (
     <div className="select-options">
@@ -88,22 +137,42 @@ const selectOptionsDropdownDiv = (
     </select>
     </div>
 );
+//========================================================================================//
 
 const clickAddButtonTab = () => {
+    setAddProductTab(true);
+    setEditProductTab(false);
     setShowSelectOptionsDropdownDiv(false);
     setSubmitButtonDescription("ADD");
 };
-const clickEditButtonTab = (e) => {
-    e.preventDefault();
+//========================================================================================//
+const clickEditButtonTab = () => {
+    // e.preventDefault();
+    setEditProductTab(true);
+    setAddProductTab(false);
     setShowSelectOptionsDropdownDiv(true);
     setSubmitButtonDescription("SAVE");
+};
+
+//========================================================================================//
+
+const switchTabBorderBottomStyle = () => {
+    let styleObj = {};
+    if (addProductTab === true) {
+    styleObj = {
+        borderBottomColor: "yellow",
+    };
+    } else {
+    styleObj = {};
+    }
+    return styleObj;
 };
 //========================================================================================//
 //========================================================================================//
 return (
     <div>
     <div className="open-buttons">
-        <button className="edit-item-button" onClick={openEditControlComponent}>
+        <button className="edit-item-button" onClick={openAddControlComponent}>
         Add Product
         </button>
         <button className="edit-item-button" onClick={openEditControlComponent}>
@@ -112,7 +181,7 @@ return (
     </div>
 
     <div>
-        {showEditControls ? (
+        {showEditControls || showAddControls ? (
         <div className="overall-item-container">
             <form className="edit-item-container">
             <div className="form-heading">
@@ -120,12 +189,18 @@ return (
                 <h2>Energy Food</h2>
             </div>
             <nav className="container-navbar">
-                <div className="add-control-header" onClick={clickAddButtonTab}>
+                <div
+                className="add-control-header"
+                onClick={clickAddButtonTab}
+                style={switchTabBorderBottomStyle()}
+                >
                 <h3>ADD PRODUCT</h3>
                 </div>
                 <div
                 className="edit-control-header"
                 onClick={clickEditButtonTab}
+
+                // style={{borderBottomColor: 'red'}}
                 >
                 <h3>EDIT PRODUCT</h3>
                 </div>
@@ -135,19 +210,6 @@ return (
             ) : (
                 <span className="select-options">Add A Product</span>
             )}
-
-            {/* <div className="select-options">
-                <select onChange={prePopulateTextFields}>
-                <option>Select A Product</option>
-                {props.items.map((value) => {
-                    return (
-                    <option value={value.name} key={value.id}>
-                        {value.name}
-                    </option>
-                    );
-                })}
-                </select>
-            </div> */}
 
             <input
                 className="name-input"

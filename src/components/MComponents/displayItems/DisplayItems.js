@@ -7,10 +7,7 @@ import "./DisplayItems.css";
 
 const DisplayItems = (props) => {
 
-   const  deleteCard=()=>{
-
-
-    }
+//    
 // console.log(props);
 return (
     <div className="items-container">
