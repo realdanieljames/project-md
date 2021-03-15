@@ -6,13 +6,20 @@ import IconContext from '../context/IconContext.js'
 import { SearchIcon, SearchOutlined, DeleteOutline } from '@material-ui/icons';
 import { InputBase, IconButton, InputAdornment, TextField } from '@material-ui/core'
 // import { SearchIcon } from '@material-ui/icons'
-const DisplayItems = () => {
+const DisplayItems = (props) => {
+
 
     const context = useContext(itemContext)
+    const  startIndex  = context.startIndex
+    
+
 
     const [searchTerm, SetSearchTerm] = useState('')
+    const [currStartIndex, setCurrStartIndex] = useState(startIndex)
 
-
+    const handleClickNext = () => {
+        console.log(startIndex)
+    }
     return (
         <div className='display-container'>
 
@@ -31,7 +38,7 @@ const DisplayItems = () => {
                     InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
-                                <SearchOutlined style={{color: 'green'}} />
+                                <SearchOutlined style={{ color: 'green' }} />
                             </InputAdornment>
                         ),
                     }}
@@ -60,7 +67,8 @@ const DisplayItems = () => {
                 // Map All items that qualify the filter above
                 .map(item => <Item key={item.id} item={item} />)}
             {/* <button className={`${context.items.length < 5}`} >PREVIOUS</button> */}
-            <button class='next'>NEXT</button>
+            <button class='next' onClick={handleClickNext}>NEXT</button>
+            {/* <button class='next' onClick={handleClickNext}>NEXT</button> */}
         </div>
     )
 

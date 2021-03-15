@@ -1,7 +1,7 @@
 import { Component } from "react";
 import "./App.css";
 import { SearchIcon, SearchOutlined, DeleteOutline } from '@material-ui/icons';
-import { InputBase, IconButton, InputAdornment, TextField,  } from '@material-ui/core'
+import { InputBase, IconButton, InputAdornment, TextField, } from '@material-ui/core'
 
 
 
@@ -77,8 +77,25 @@ class App extends Component {
         description: "A root vegetable, usually orange in color.",
       },
     ],
+    totalPages: [],
+    startIndex: 0,
   };
 
+  componentDidMount = () => {
+    let { items } = this.state
+    // Get total pages base on array length
+    let pages = Math.ceil(items.length / 5)
+    // Create an array of number base on total pages
+    let arr = []
+    for (let i = 1; i <= pages; i++) {
+      arr.push(i)
+    }
+    // Set array in the state to match the new array
+    this.setState({
+      ...this.state,
+      totalPages: arr
+    })
+  }
 
   handleDeleteItem = (id) => {
     let copyItems = [...this.state.items]
@@ -90,18 +107,29 @@ class App extends Component {
     })
   }
 
+  handleClickNext = () => {
+    console.log('next')
+  }
+  handleClickPrevious = () => {
+    console.log('previous')
+
+  }
+
 
 
   render() {
     return (
       <div className="App">
         <div className="grant-container">
-        {/* <EditItem items={this.state.items} /> */}
-        <div className="control-container">control-container</div>
-        <itemContext.Provider value={{ items: this.state.items, handleDeleteItem: this.handleDeleteItem }}>
-          <DisplayItems className="list-container"/>
-        </itemContext.Provider>
-
+          {/* <EditItem items={this.state.items} /> */}
+          <div className="control-container">control-container</div>
+          <itemContext.Provider value={{
+            items: this.state.items,
+            handleDeleteItem: this.handleDeleteItem,
+            startIndex: this.state.startIndex
+          }}>
+            <DisplayItems className="list-container" />
+          </itemContext.Provider>
         </div>
       </div>
     );
