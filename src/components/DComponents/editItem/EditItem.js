@@ -78,29 +78,28 @@ const onButtonSubmit = (click) => {
     click.preventDefault();
     // console.log(click);
     // console.log(props.items);
-    if(addProductTab=== true){
+    if (addProductTab === true) {
+    const addedItem = {
+        id: uuidv4(),
+        name: tempName,
+        price: tempPrice,
+        imageLink: tempImageLink,
+        description: tempDescription,
+    };
 
-        const addedItem = {
-            id: uuidv4(),
-            name: tempName,
-            price: tempPrice,
-            imageLink: tempImageLink,
-            description: tempDescription,
-        };
-        
-        const newArr = [...tempProps, addedItem];
-        setTempProps(newArr);
-        console.log(newArr);
-        // newArr.map((value) => {
-            // console.log(value);
-            // });
-        }
+    const newArr = [...tempProps, addedItem];
+    setTempProps(newArr);
+    console.log(newArr);
+    // newArr.map((value) => {
+    // console.log(value);
+    // });
+    }
 
     if (editProductTab === true) {
     // console.log(click)
- 
+
     let editedItem = {
-        id:'',
+        id: "",
         name: tempName,
         price: tempPrice,
         imageLink: tempImageLink,
@@ -108,16 +107,14 @@ const onButtonSubmit = (click) => {
     };
     // };
     tempProps.map((value) => {
-        
-       if(value.name !== tempName){
-           setTempProps([ editedItem.name=tempName])
-            // editedItem.name=tempName
-       }
-       console.log(value)
-
+        if (value.name !== tempName) {
+        setTempProps([(editedItem.name = tempName)]);
+        // editedItem.name=tempName
+        }
+        console.log(value);
     });
-    console.log(editedItem)
-    return editedItem
+    console.log(editedItem);
+    return editedItem;
     }
 };
 //========================================================================================//
