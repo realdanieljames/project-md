@@ -136,7 +136,8 @@ return (
     <div>
     <div>
         {showEditControls || showAddControls ? (
-        <div className="overall-item-container">
+        // <div className="overall-item-container">
+        <div>
             <form className="edit-item-container">
             <div className="form-heading">
                 <img className="logo" src={logo} />

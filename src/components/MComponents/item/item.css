@@ -40,6 +40,11 @@ img {
     
 }
 
+.item-id {
+    font-size: 8px;
+    color: #8C9395;
+}
+
 .item-description {
     line-height: 16px;
     font-size: 12px;

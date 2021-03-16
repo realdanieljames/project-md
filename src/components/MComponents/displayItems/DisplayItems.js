@@ -52,7 +52,7 @@ const DisplayItems = () => {
                         }
                     })
                     // Map All items that qualify the filter above
-                    .map(item => <Item className='single-item' key={item.id} item={item} />)
+                    .map((item, index) => <Item className='single-item' key={item.id} item={item} index={index}/>)
                     // Show only 5 items/page base on startIndex
                     .slice(startIndex, startIndex + 5)
                 }

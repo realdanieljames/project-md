@@ -19,7 +19,7 @@ export default function Item(props) {
             <img alt= 'fruit' className='item-img' src={imageLink}></img>
             <div className='description-wrapper'>
                 <p className='item-name'>{name}</p>
-                <p className='item-description'># {id} </p>
+                <p className='item-description'># 0{props.index} </p>
                 <p className='item-description'>{description}</p>
             </div>
             <h1 className='item-price'>{price}</h1>

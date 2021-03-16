@@ -1,35 +1,49 @@
-* {
-box-sizing: border-box;
-}
 
+/* From Daniel ======================== */
 
-.grant-container {
-    width: 70%;
-    height: 1000px;
-    margin: 50px auto;
+.overall-item-container {
+    background-color: white;
     display: grid;
-    border: 10px solid black;
-    grid-template-areas: 
-    'ctl ctl lst'
-    'ctl ctl lst'
-    'ctl ctl lst'
+    grid-template-columns: 5fr 3fr;
+    grid-template-rows: 1fr;
+    /* width: 900px; */
+    margin: auto;
+    margin-top: 5%;
+    height: 660px;
+    /* box-shadow: 3px 3px 3px 3px rgba(121, 118, 118, 0.176); */
+    /*CSS From FIGMA ===*/
+    position: absolute;
+    width: 1000px;
+    height: 696px;
+    right: 222px;
+    top: calc(50% - 696px/2 - 52px);
+    background: #FFFFFF;
+    box-shadow: 0px 5.33611px 10.6722px rgba(0, 0, 0, 0.02), 0px 1.33403px 16.0083px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+
 }
 
-.control-container {
-    display: inline-block;
-    width: 600px;
-    height: auto;
-    background-color: red;
+
+.edit-item-container {
     display: grid;
-    grid-area: ctl;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat (7, 1fr);
+    /* box-shadow: 3px 3px 3px 3px rgba(121, 118, 118, 0.176); */
+    justify-self: center;
+    height: 650px;
+    /* margin: auto; */
+    /* border: 2px solid black; */
+    /* width: 90%; */
+    /* justify-content: center; */
+    /* height: 500px; */
+    /* padding: 3px; */
+    /* background-color: aqua; */
 }
 
-.list-container {
-    display: grid;
-    grid-area: lst;
-    background-color: blueviolet;
-    
+
+.display-items {
+    grid-column: 2/3;
+    justify-self: center;
 }
-
-
-
