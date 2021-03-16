@@ -2,8 +2,6 @@ import React, { useContext } from 'react'
 import './item.css'
 import itemContext from '../context/ItemContext.js'
 import '../../../../puplic/close-icon.svg'
-// import CloseIcon from '@material-ui/icons/Close';
-
 
 
 export default function Item(props) {
@@ -16,7 +14,8 @@ export default function Item(props) {
     const { id, name, price, imageLink, description } = props.item
 
     return (
-        <div className='item-wrapper'>
+        
+        <div className='single-item'>
             <img alt= 'fruit' className='item-img' src={imageLink}></img>
             <div className='description-wrapper'>
                 <p className='item-name'>{name}</p>
@@ -25,8 +24,8 @@ export default function Item(props) {
             </div>
             <h1 className='item-price'>{price}</h1>
 
-            {/* <button className='close-btn' onClick={() => handleDeleteItem(id)}><CloseIcon fontSize="small" color="MuiIcon-colorAction"/></button> */}
-            <button className='close-btn' onClick={() => handleDeleteItem(id)}>X</button>
+            <button className='close-btn' onClick={() => handleDeleteItem(id)}>✕</button>
         </div>
+        
     )
 }

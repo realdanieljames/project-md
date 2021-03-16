@@ -1,36 +1,34 @@
 * {
 box-sizing: border-box;
-background-color: white;
+}
 
-}
-.App {
-    background-color: white;
-}
 
 .grant-container {
     width: 70%;
     height: 1000px;
     margin: 50px auto;
-    background-color: blue;
     display: grid;
-    grid-template-areas: 'ctl ctl lst';
+    border: 10px solid black;
+    grid-template-areas: 
+    'ctl ctl lst'
+    'ctl ctl lst'
+    'ctl ctl lst'
 }
 
 .control-container {
     display: inline-block;
     width: 600px;
-    height: 800px;
+    height: auto;
     background-color: red;
     display: grid;
     grid-area: ctl;
-    
-    /* float: left */
 }
 
 .list-container {
     display: grid;
     grid-area: lst;
-    /* float: left */
+    background-color: blueviolet;
+    
 }
 
 

@@ -3,9 +3,8 @@ import "./DisplayItems.css";
 import Item from '../item/Item.js'
 import Pagination from '../pagination/Pagination.js'
 import itemContext from '../context/ItemContext.js'
-import IconContext from '../context/IconContext.js'
-import { SearchIcon, SearchOutlined, DeleteOutline } from '@material-ui/icons';
-import { InputBase, IconButton, InputAdornment, TextField } from '@material-ui/core'
+import {SearchOutlined,  } from '@material-ui/icons';
+import { InputAdornment, TextField } from '@material-ui/core'
 
 
 
@@ -23,7 +22,7 @@ const DisplayItems = () => {
     return (
         <div className='display-container'>
             {/* ==========================Search bar=========================== */}
-            <div className='search-container'>
+            <div className='search-wrapper'>
                 <TextField
                     style={{ color: 'green', margin: 16, width: 374 }}
                     size='large'
@@ -39,7 +38,8 @@ const DisplayItems = () => {
             </div>
 
             {/* ==========================Display Item=========================== */}
-            <div >
+            <div className='items-wrapper' >
+
                 {items
                     .filter(item => {
                         // If search term is empty, return all items
@@ -52,15 +52,16 @@ const DisplayItems = () => {
                         }
                     })
                     // Map All items that qualify the filter above
-                    .map(item => <Item key={item.id} item={item} />)
+                    .map(item => <Item className='single-item' key={item.id} item={item} />)
                     // Show only 5 items/page base on startIndex
                     .slice(startIndex, startIndex + 5)
                 }
+
             </div>
 
 
             {/* ==========================Pagination=========================== */}
-            <Pagination className='pagination' />
+            <Pagination className='pagination-wrapper' />
         </div>
     )
 

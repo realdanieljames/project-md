@@ -4,10 +4,11 @@
    background-color: #F2F3F2 ;
 }
 
-.item-wrapper {
+.single-item {
     display: grid;
     grid-template-areas: "ft ft ft ft";
-    margin: 16px
+    margin: 16px;
+    height: 68px;
 }
 
 .description-wrapper {
@@ -17,7 +18,7 @@
 }
 
 img {
-    width: 58px;
+    width: 66px;
     border: 2px solid white;
 }
 

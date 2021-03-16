@@ -23,17 +23,18 @@ export default function Pagination(props) {
         <div className='pagination'>
             <button
                 disabled={startIndex === 0 ? true : false}
-                onClick={handleClickPrevious}>PREVIOUS</button>
+                className={startIndex === 0 ? 'inactive' : 'active'}
+                onClick={handleClickPrevious}>ᐸ  PREVIOUS</button>
 
-            {pageButtons.map(item => (
+            {/* {pageButtons.map(item => (
                 <button
-                    className={item.isActive === true ? 'green' : ''}
-                    onClick={() => handleChangePageNumber(item)}>{item.number}</button>))}
+                    className={item.isActive === true ? 'selected' : 'default'}
+                    onClick={() => handleChangePageNumber(item)}>{item.number}</button>))} */}
 
             <button
                 disabled={items.length < endIndex ? true : false}
-                className='next-previous'
-                onClick={handleClickNext}>NEXT</button>
+                className={items.length < endIndex ? 'inactive' : 'active'}
+                onClick={handleClickNext}>NEXT ᐳ</button>
         </div>
     )
 }
