@@ -18,7 +18,7 @@ const DisplayItems = (props) => {
     
 
 
-console.log(props)
+
 
 
     const [searchTerm, SetSearchTerm] = useState('')

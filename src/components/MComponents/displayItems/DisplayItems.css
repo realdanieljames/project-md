@@ -1,4 +1,3 @@
-
 .display-container {
     /* background-color: orange; */
     display: grid;
@@ -25,7 +24,7 @@ input {
     background-color: white;
     color: #5C656A;
     display: grid;
-    grid-area:  'col';
+    grid-area: 'col';
 }
 
 .items-wrapper {
@@ -36,13 +35,9 @@ input {
     height: 450px;
 }
 
-.single-item {
-}
+.single-item {}
 
 .pagination-wrapper {
     display: grid;
     grid-area: 'page';
 }
-
-
-

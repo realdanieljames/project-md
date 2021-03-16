@@ -1,20 +1,18 @@
 import React, { useState, useContext } from "react";
-// import '../../../App.css'
-import { v4 as uuidv4 } from "uuid";
+
+
 import "./AddAndEditProduct.css";
 import DisplayItems from "../../MComponents/displayItems/DisplayItems";
 import itemContext from "../../MComponents/context/ItemContext";
 import logo from "./EnergyFoodLogo.png";
-import { LocalConvenienceStoreOutlined } from "@material-ui/icons";
+
 
 //========================================================================================//
 //========================================================================================//
 //========================================================================================//
 
 const AddAndEditProduct = (props) => {
-// const context = useContext(itemContext);
 
-// const { items, startIndex } = context.state;
 
 const [showEditControls, setShowEditControls] = useState(true);
 const [showAddControls, setShowAddControls] = useState(true);
@@ -28,8 +26,8 @@ let [
     setShowSelectOptionsDropdownDiv,
 ] = useState(true);
 let [submitButtonDescription, setSubmitButtonDescription] = useState("SAVE");
-// let [itemList, setItemList] = useState([...props.items]);
-let [tempProps, setTempProps] = useState(props.stateValues);
+
+
 let [itemList, setItemList] = useState([...props.stateValues.items]);
 let [addProductTab, setAddProductTab] = useState(false);
 let [editProductTab, setEditProductTab] = useState(false);
@@ -37,7 +35,6 @@ let [editProductTab, setEditProductTab] = useState(false);
 //========================================================================================//
 //========================================================================================//
 //========================================================================================//
-console.log(props)
 // setShowAddControls(true)
 const clickAddButtonTab = () => {
     setAddProductTab(true);

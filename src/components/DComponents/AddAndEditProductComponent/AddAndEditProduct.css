@@ -22,9 +22,9 @@
 .overall-item-container {
     /* border: red solid 2px; */
     display: grid;
-    grid-template-columns: 5fr 3fr;
+    grid-template-columns: 6fr 3fr;
     grid-template-rows: 1fr;
-    /* width: 900px; */
+    width: 900px;
     margin: auto;
     margin-top: 5%;
     height: 660px;
@@ -43,7 +43,7 @@
     grid-template-columns: 100%;
     grid-template-rows: repeat (7, 1fr);
     /* box-shadow: 3px 3px 3px 3px rgba(121, 118, 118, 0.176); */
-    justify-self: center;
+    background-color: white;
     height: 650px;
     /* margin: auto; */
     /* border: 2px solid black; */
@@ -59,16 +59,20 @@
     grid-template-columns: 10% 90%;
     grid-template-rows: 100%;
     grid-column: 1/2;
-    height: 40px;
+    height: 70px;
     padding-top: 20px;
+    padding-left: 20px;
+    background-color: white;
 }
 
 .form-heading h2 {
+    padding-top: 13px;
     margin-left: 5px;
+    background-color: white;
 }
 
 .logo {
-    height: 50px;
+    border: none;
     width: 39px;
 }
 
@@ -79,10 +83,15 @@
     grid-template-rows: 100%;
     background-color: rgb(104, 184, 104);
     /* border: 1px solid rgb(104, 184, 104); */
-    color: white;
+    color: black;
     text-align: center;
     height: 50px;
     margin-bottom: 0px;
+}
+
+.add-control-header h3 {
+    padding-top: 15px;
+    background-color: rgb(104, 184, 104);
 }
 
 .add-control-header {
@@ -96,7 +105,14 @@
     border-bottom: 4px solid white;
 }
 
+.edit-control-header h3 {
+    padding-top: 15px;
+    background-color: rgb(104, 184, 104);
+    ;
+}
+
 .edit-control-header {
+    background-color: rgb(104, 184, 104);
     grid-row: 1/2;
     grid-column: 2/3;
     cursor: pointer;
@@ -135,11 +151,12 @@ input {
     border-top: none;
     border-right: none;
     border-left: none;
-    margin-top: 15px;
+    margin-top: 5px;
+    margin-bottom: 0px;
     padding-left: 10px;
     justify-self: center;
-    width: 350px;
-    /* height: 20px; */
+    /* width: 350px; */
+    /* height: 70px; */
     background-color: rgba(121, 118, 118, 0.176);
     color: black;
     margin-right: 30px;

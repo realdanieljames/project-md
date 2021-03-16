@@ -5,7 +5,7 @@ import '../../../../puplic/close-icon.svg'
 
 
 export default function Item(props) {
-console.log(props)
+
 
 
     // pass fucntion from App.js using context
