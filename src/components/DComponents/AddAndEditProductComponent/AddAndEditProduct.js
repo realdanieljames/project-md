@@ -5,6 +5,7 @@ import "./AddAndEditProduct.css";
 import DisplayItems from "../../MComponents/displayItems/DisplayItems";
 import itemContext from "../../MComponents/context/ItemContext";
 import logo from "./EnergyFoodLogo.png";
+import { LocalConvenienceStoreOutlined } from "@material-ui/icons";
 
 //========================================================================================//
 //========================================================================================//
@@ -36,7 +37,7 @@ let [editProductTab, setEditProductTab] = useState(false);
 //========================================================================================//
 //========================================================================================//
 //========================================================================================//
-
+console.log(props)
 // setShowAddControls(true)
 const clickAddButtonTab = () => {
     setAddProductTab(true);
@@ -127,15 +128,21 @@ const onEditButtonSubmit = async (id) => {
     setItemList(arr[0]);
 };
 
+const handleDeleteItem = (id) => {
+  
+    let newItems = itemList.filter((item) => item.id !== id);
+    setItemList(newItems)
 
+  };
 //========================================================================================//
 //========================================================================================//
 //========================================================================================//
 return (
     <div>
     <div>
-        {showEditControls || showAddControls ? (
+        {/* {showEditControls || showAddControls ? ( */}
         <div className="overall-item-container">
+
             <form className="edit-item-container">
             <div className="form-heading">
                 <img className="logo" src={logo} />
@@ -232,10 +239,10 @@ return (
             // handleClickPrevious={this.handleClickPrevious}
             // />
             */}
-            <DisplayItems className="list-container" items={itemList} handleDeleteItem={props.handleDeleteItem}/>
+            <DisplayItems className="list-container" items={itemList} handleDeleteItem={handleDeleteItem}/>
             </itemContext.Provider>
         </div>
-        ) : null}
+        {/* ) : null} */}
     </div>
     </div>
 );

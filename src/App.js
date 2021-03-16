@@ -110,15 +110,16 @@ class App extends Component {
     });
   };
 
-  handleDeleteItem = (id) => {
-    let copyItems = [...this.state.items];
-    // filter out the delete item
-    let newItems = copyItems.filter((item) => item.id !== id);
-    this.setState({
-      ...this.state,
-      items: newItems,
-    });
-  };
+  // handleDeleteItem = (id) => {
+  //   console.log('fdfdf')
+  //   let copyItems = [...this.state.items];
+  //   // filter out the delete item
+  //   let newItems = copyItems.filter((item) => item.id !== id);
+  //   this.setState({
+  //     ...this.state,
+  //     items: newItems,
+  //   });
+  // };
 
   handleClickNext = () => {
     this.setState((prevState) => {

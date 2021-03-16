@@ -18,9 +18,9 @@ const DisplayItems = (props) => {
     
 
 
+console.log(props)
 
 
-console.log(props.items)
     const [searchTerm, SetSearchTerm] = useState('')
 
 
@@ -60,7 +60,7 @@ console.log(props.items)
                         }
                     })
                     // Map All items that qualify the filter above
-                    .map(item => <Item className='single-item' key={item.id} item={item} />)
+                    .map(item => <Item className='single-item' key={item.id} item={item} handleDeleteItem={props.handleDeleteItem}/>)
                     // Show only 5 items/page base on startIndex
                     .slice(startIndex, startIndex + 5)
                 }
@@ -69,7 +69,7 @@ console.log(props.items)
 
 
             {/* ==========================Pagination=========================== */}
-            <Pagination className='pagination-wrapper' items={props.items}/>
+            <Pagination className='pagination-wrapper' items={props.items} />
         </div>
     )
 

@@ -5,7 +5,7 @@ import '../../../../puplic/close-icon.svg'
 
 
 export default function Item(props) {
-
+console.log(props)
 
 
     // pass fucntion from App.js using context
@@ -27,7 +27,7 @@ export default function Item(props) {
             </div>
             <h1 className='item-price'>{price}</h1>
 
-            <button className='close-btn' onClick={() => handleDeleteItem(id)}>✕</button>
+            <button className='close-btn' onClick={() => props.handleDeleteItem(id)}>✕</button>
         </div>
         
     )
