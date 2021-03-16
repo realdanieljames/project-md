@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import "./App.css";
 
-import EditItem from "./components/DComponents/editItem/AddAndEditProduct";
+import AddAndEditProduct from "./components/DComponents/AddAndEditProductComponent/AddAndEditProduct";
 
 
 class App extends Component {
@@ -55,7 +55,7 @@ class App extends Component {
       <div className="App">
     
 
-          <EditItem items={this.state.items} />
+          <AddAndEditProduct items={this.state.items} />
       </div>
     );
   }

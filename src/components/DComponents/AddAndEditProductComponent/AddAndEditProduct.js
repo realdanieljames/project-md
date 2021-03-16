@@ -9,7 +9,7 @@ import logo from "./EnergyFoodLogo.png";
 //========================================================================================//
 //========================================================================================//
 
-const EditControlComponent = (props) => {
+const AddAndEditProduct = (props) => {
 const [showEditControls, setShowEditControls] = useState(true);
 const [showAddControls, setShowAddControls] = useState(true);
 let [tempID, setTempID] = useState("");
@@ -46,6 +46,23 @@ const clickEditButtonTab = () => {
     setShowSelectOptionsDropdownDiv(true);
     setSubmitButtonDescription("SAVE");
 };
+
+
+//========================================================================================//
+
+
+
+const prePopulateTextFields = (event) => {
+    tempProps.map((value) => {
+    if (event.target.value === value.name) {
+        setTempID(value.id);
+        setTempName(value.name);
+        setTempPrice(value.price);
+        setTempImageLink(value.imageLink);
+        setTempDescription(value.description);
+    }
+    });
+};
 //========================================================================================//
 
 const selectOptionsDropdownDiv = (
@@ -63,22 +80,6 @@ const selectOptionsDropdownDiv = (
     </select>
     </div>
 );
-
-//========================================================================================//
-
-
-
-const prePopulateTextFields = (event) => {
-    tempProps.map((value) => {
-    if (event.target.value === value.name) {
-        setTempID(value.id);
-        setTempName(value.name);
-        setTempPrice(value.price);
-        setTempImageLink(value.imageLink);
-        setTempDescription(value.description);
-    }
-    });
-};
 
 //========================================================================================//
 
@@ -218,4 +219,4 @@ return (
 //========================================================================================//
 //========================================================================================//
 
-export default EditControlComponent;
+export default AddAndEditProduct;
