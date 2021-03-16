@@ -82,6 +82,7 @@
     color: white;
     text-align: center;
     height: 50px;
+    margin-bottom: 0px;
 }
 
 .add-control-header {
@@ -111,7 +112,7 @@ select {
     padding-left: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
-    /* height: 50px; */
+    /* height: 10px; */
     margin-bottom: 0px;
     /* margin-top: 0px; */
     background-color: rgba(121, 118, 118, 0.176);
@@ -125,7 +126,7 @@ select {
     justify-self: center;
     /* width: 300px; */
     /* padding: 50px; */
-    /* height: 20px; */
+    height: 35px;
     /* margin: auto; */
     /* padding-left: 250px; */
 }
@@ -180,4 +181,5 @@ input {
     background-color: rgb(104, 184, 104);
     color: white;
     border-color: white;
+    font-weight: bold;
 }

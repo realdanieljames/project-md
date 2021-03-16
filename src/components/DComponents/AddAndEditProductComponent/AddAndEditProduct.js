@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./AddAndEditProduct.css";
 // import DisplayItems from "../../MComponents/displayItems/DisplayItems";
@@ -39,6 +39,7 @@ const clickAddButtonTab = () => {
     setShowSelectOptionsDropdownDiv(false);
     setSubmitButtonDescription("ADD");
 };
+
 //========================================================================================//
 const clickEditButtonTab = () => {
     setEditProductTab(true);
