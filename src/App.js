@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 
 import "./App.css";
 
-import EditItem from "./components/DComponents/editItem/EditItem";
-import AddItem from "./components/DComponents/addItem/AddItem";
+import EditItem from "./components/DComponents/editItem/AddAndEditProduct";
+
 
 class App extends Component {
   state = {
@@ -54,7 +54,7 @@ class App extends Component {
     return (
       <div className="App">
     
-          {/* <AddItem items={this.state.items} /> */}
+
           <EditItem items={this.state.items} />
       </div>
     );
