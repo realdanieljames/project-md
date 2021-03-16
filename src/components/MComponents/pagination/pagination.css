@@ -1,0 +1,45 @@
+.pagination {
+    text-align: center;
+    
+}
+
+button {
+    border-style: none;
+    font-size: 14px;
+    color: #2D3931;
+    margin: 8px;
+    border-radius: 4px;
+    line-height: 16px;
+    padding: 4px 8px 4px 8px;
+    font-weight: 600;
+}
+
+
+.inactive {
+    color: rgba(196,196,196,1);
+}
+
+
+.active {
+    background-color: #F2F3F2;
+    color:  #27AE60;
+}
+
+.active:hover {
+    background-color: rgba(39,174,96,0.2);
+
+}
+
+.selected {
+    background-color: #27AE60;
+    color: white;
+    
+} 
+
+.default {
+    color: #2D3931;
+}
+
+.default:hover {
+    background-color: rgba(39,174,96,0.2);
+}

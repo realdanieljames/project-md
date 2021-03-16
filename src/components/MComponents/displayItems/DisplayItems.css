@@ -1,0 +1,48 @@
+
+.display-container {
+    /* background-color: orange; */
+    display: grid;
+    /* grid-template-areas: 
+    "srch"
+    "list"
+    "list"
+    "page"; */
+}
+
+.search-wrapper {
+    margin-top: 16px;
+    display: grid;
+    grid-area: 'srch';
+    grid-template-areas: 'col col';
+}
+
+input {
+    width: 371px;
+    height: 40px;
+    padding-left: 64px;
+    border-radius: 4px;
+    border-style: none;
+    background-color: white;
+    color: #5C656A;
+    display: grid;
+    grid-area:  'col';
+}
+
+.items-wrapper {
+    margin: 16px auto;
+    /* background-color: aqua; */
+    display: grid;
+    grid-area: 'list';
+    height: 450px;
+}
+
+.single-item {
+}
+
+.pagination-wrapper {
+    display: grid;
+    grid-area: 'page';
+}
+
+
+

@@ -24,7 +24,7 @@
     display: grid;
     grid-template-columns: 5fr 3fr;
     grid-template-rows: 1fr;
-    width: 900px;
+    /* width: 900px; */
     margin: auto;
     margin-top: 5%;
     height: 660px;

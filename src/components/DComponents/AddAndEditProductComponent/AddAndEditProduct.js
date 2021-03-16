@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
+// import '../../../App.css'
 import { v4 as uuidv4 } from "uuid";
 import "./AddAndEditProduct.css";
-// import DisplayItems from "../../MComponents/displayItems/DisplayItems";
+import DisplayItems from "../../MComponents/displayItems/DisplayItems";
+import itemContext from "../../MComponents/context/ItemContext";
 import logo from "./EnergyFoodLogo.png";
-
 
 //========================================================================================//
 //========================================================================================//
 //========================================================================================//
 
 const AddAndEditProduct = (props) => {
+// const context = useContext(itemContext);
+
+// const { items, startIndex } = context.state;
+
 const [showEditControls, setShowEditControls] = useState(true);
 const [showAddControls, setShowAddControls] = useState(true);
 let [tempID, setTempID] = useState("");
@@ -22,7 +27,9 @@ let [
     setShowSelectOptionsDropdownDiv,
 ] = useState(true);
 let [submitButtonDescription, setSubmitButtonDescription] = useState("SAVE");
-let [tempProps, setTempProps] = useState([...props.items]);
+// let [itemList, setItemList] = useState([...props.items]);
+let [tempProps, setTempProps] = useState(props.stateValues);
+let [itemList, setItemList] = useState([...props.stateValues.items]);
 let [addProductTab, setAddProductTab] = useState(false);
 let [editProductTab, setEditProductTab] = useState(false);
 
@@ -30,9 +37,7 @@ let [editProductTab, setEditProductTab] = useState(false);
 //========================================================================================//
 //========================================================================================//
 
-
-
-
+// setShowAddControls(true)
 const clickAddButtonTab = () => {
     setAddProductTab(true);
     setEditProductTab(false);
@@ -48,13 +53,10 @@ const clickEditButtonTab = () => {
     setSubmitButtonDescription("SAVE");
 };
 
-
 //========================================================================================//
 
-
-
 const prePopulateTextFields = (event) => {
-    tempProps.map((value) => {
+    itemList.map((value) => {
     if (event.target.value === value.name) {
         setTempID(value.id);
         setTempName(value.name);
@@ -71,7 +73,7 @@ const selectOptionsDropdownDiv = (
     <select onChange={prePopulateTextFields}>
         <option>Select A Product</option>
 
-        {tempProps.map((value) => {
+        {itemList.map((value) => {
         return (
             <option value={value.name} key={value.id}>
             {value.name}
@@ -89,15 +91,14 @@ const onButtonSubmit = (click) => {
 
     if (addProductTab === true) {
     const addedItem = {
-        id: uuidv4(),
+        id: (itemList.length + 1).toString(),
         name: tempName,
         price: tempPrice,
         imageLink: tempImageLink,
         description: tempDescription,
     };
-
-    const newArr = [...tempProps, addedItem];
-    setTempProps(newArr);
+    const newArr = [...itemList, addedItem];
+    setItemList(newArr);
     }
     if (editProductTab === true) {
     onEditButtonSubmit(tempID);
@@ -108,7 +109,7 @@ const onButtonSubmit = (click) => {
 
 const onEditButtonSubmit = async (id) => {
     const arr = [
-    tempProps.map((value) => {
+    itemList.map((value) => {
         if (value.id === id) {
         return {
             id: id,
@@ -122,11 +123,9 @@ const onEditButtonSubmit = async (id) => {
         }
     }),
     ];
-
-    setTempProps(arr[0]);
+    console.log(arr[0]);
+    setItemList(arr[0]);
 };
-
-
 
 
 //========================================================================================//
@@ -205,11 +204,36 @@ return (
                 {submitButtonDescription}
             </button>
             </form>
-            <div className="display-items"></div>
+            {/* <div className="display-items"></div> */}
             {/* <DisplayItems
-            items={tempProps}
+            items={itemList.items}
             prePopulateTextFields={prePopulateTextFields}
             /> */}
+            <itemContext.Provider
+            value={{
+                state: props.stateValues,
+                items: itemList,
+                handleDeleteItem: props.handleDeleteItem,
+                handleChangePageNumber: props.handleChangePageNumber,
+                handleClickNext: props.handleClickNext,
+                handleClickPrevious: props.handleClickPrevious,
+                // // state: this.state,
+                // handleDeleteItem: this.handleDeleteItem,
+                // handleChangePageNumber: this.handleChangePageNumber,
+                // handleClickNext: this.handleClickNext,
+                // handleClickPrevious: this.handleClickPrevious,
+            }}
+            >
+            {/* <AddAndEditProduct 
+            // stateValues={this.state}
+            // handleDeleteItem={this.handleDeleteItem}
+            // handleChangePageNumber={ this.handleChangePageNumber}
+            // handleClickNext={this.handleClickNext}
+            // handleClickPrevious={this.handleClickPrevious}
+            // />
+            */}
+            <DisplayItems className="list-container" items={itemList} handleDeleteItem={props.handleDeleteItem}/>
+            </itemContext.Provider>
         </div>
         ) : null}
     </div>

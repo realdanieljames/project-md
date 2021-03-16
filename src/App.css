@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
+.grant-container {
+    width: 70%;
+    /* height: 1000px; */
+    height: 729px;
+    margin: 50px auto;
+    display: grid;
+    border: 10px solid black;
+    grid-template-areas: 'ctl ctl lst' 'ctl ctl lst' 'ctl ctl lst';
+    grid-template-areas: 'ctl  lst' 'ctl  lst' 'ctl  lst';
+}
+
+.control-container {
+    display: inline-block;
+    width: 600px;
+    height: auto;
+    background-color: red;
+    display: grid;
+    grid-area: ctl;
+}
+
+.list-container {
+    display: grid;
+    grid-area: lst;
+    background-color: blueviolet;
+}
