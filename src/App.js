@@ -13,6 +13,7 @@ class App extends Component {
     items: [
       {
         id: uuidv4(),
+
         name: "Golden Apple Bag",
         price: "$7.99",
         imageLink:
@@ -80,6 +81,8 @@ class App extends Component {
     startIndex: 0,
 
   };
+
+
 
   componentDidMount = () => {
     let { items } = this.state
@@ -167,24 +170,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <div className="grant-container"> */}
+
         <div className="overall-item-container">
-          {/* <div className="control-container"> */}
-          <div className="edit-item-container">
-            <AddAndEditProduct items={this.state.items} />
-          </div>
-          <div className="display-items">
-            <itemContext.Provider value={{
-              state: this.state,
-              handleDeleteItem: this.handleDeleteItem,
-              handleChangePageNumber: this.handleChangePageNumber,
-              handleClickNext: this.handleClickNext,
-              handleClickPrevious: this.handleClickPrevious,
-            }}>
-              {/* <DisplayItems className="list-container" /> */}
+          <itemContext.Provider value={{
+            state: this.state,
+            handleDeleteItem: this.handleDeleteItem,
+            handleChangePageNumber: this.handleChangePageNumber,
+            handleClickNext: this.handleClickNext,
+            handleClickPrevious: this.handleClickPrevious,
+          }}>
+
+            <div className="edit-item-container">
+              <AddAndEditProduct items={this.state.items} />
+            </div>
+
+            <div className="display-items">
               <DisplayItems />
-            </itemContext.Provider>
-          </div>
+            </div>
+
+          </itemContext.Provider>
         </div>
       </div>
     );
