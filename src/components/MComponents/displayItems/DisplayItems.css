@@ -1,6 +1,7 @@
 .display-container {
     /* background-color: orange; */
     display: grid;
+    /* width: 50px; */
     /* grid-template-areas: 
     "srch"
     "list"

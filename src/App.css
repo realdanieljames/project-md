@@ -4,7 +4,7 @@
 
 .grant-container {
     width: 70%;
-    height: 1000px;
+    /* height: 1000px; */
     height: 729px;
     margin: 50px auto;
     display: grid;

@@ -1,19 +1,15 @@
 import React, { useState, useContext } from "react";
 
-
 import "./AddAndEditProduct.css";
 import DisplayItems from "../../MComponents/displayItems/DisplayItems";
 import itemContext from "../../MComponents/context/ItemContext";
 import logo from "./EnergyFoodLogo.png";
-
 
 //========================================================================================//
 //========================================================================================//
 //========================================================================================//
 
 const AddAndEditProduct = (props) => {
-
-
 const [showEditControls, setShowEditControls] = useState(true);
 const [showAddControls, setShowAddControls] = useState(true);
 let [tempID, setTempID] = useState("");
@@ -27,10 +23,9 @@ let [
 ] = useState(true);
 let [submitButtonDescription, setSubmitButtonDescription] = useState("SAVE");
 
-
 let [itemList, setItemList] = useState([...props.stateValues.items]);
 let [addProductTab, setAddProductTab] = useState(false);
-let [editProductTab, setEditProductTab] = useState(false);
+let [editProductTab, setEditProductTab] = useState(true);
 
 //========================================================================================//
 //========================================================================================//
@@ -126,109 +121,106 @@ const onEditButtonSubmit = async (id) => {
 };
 
 const handleDeleteItem = (id) => {
-  
     let newItems = itemList.filter((item) => item.id !== id);
-    setItemList(newItems)
-
-  };
+    setItemList(newItems);
+};
 //========================================================================================//
 //========================================================================================//
 //========================================================================================//
 return (
     <div>
-    <div>
-        {/* {showEditControls || showAddControls ? ( */}
-        <div className="overall-item-container">
-
-            <form className="edit-item-container">
-            <div className="form-heading">
-                <img className="logo" src={logo} />
-                <h2>Energy Food</h2>
+    {/* <div> */}
+    {/* {showEditControls || showAddControls ? ( */}
+    <div className="overall-item-container">
+        <form className="edit-item-container">
+        <div className="form-heading">
+            <img className="logo" src={logo} />
+            <h1>Energy Food</h1>
+        </div>
+        <nav className="container-navbar">
+            <div
+            className="add-control-header"
+            onClick={clickAddButtonTab}
+            style={addProductTab ? { color: "red" } : null}
+            >
+            <h3>ADD PRODUCT</h3>
             </div>
-            <nav className="container-navbar">
-                <div
-                className="add-control-header"
-                onClick={clickAddButtonTab}
-                style={addProductTab ? { backgroundColor: "red" } : null}
-                >
-                <h3>ADD PRODUCT</h3>
-                </div>
-                <div
-                className="edit-control-header"
-                onClick={clickEditButtonTab}
-                style={editProductTab ? { backgroundColor: "red" } : null}
-                >
-                <h3>EDIT PRODUCT</h3>
-                </div>
-            </nav>
-            {showSelectOptionsDropdownDiv ? (
-                selectOptionsDropdownDiv
-            ) : (
-                <span className="select-options">Add A Product</span>
-            )}
+            <div
+            className="edit-control-header"
+            onClick={clickEditButtonTab}
+            style={editProductTab ? { color: "red" } : null}
+            >
+            <h3>EDIT PRODUCT</h3>
+            </div>
+        </nav>
+        {showSelectOptionsDropdownDiv ? (
+            selectOptionsDropdownDiv
+        ) : (
+            <span className="select-options">Add A Product</span>
+        )}
 
-            <input
-                className="name-input"
-                defaultValue={tempName}
-                placeholder="Name"
-                type="text"
-                onChange={(event) => {
-                setTempName(event.target.value);
-                }}
-            />
+        <input
+            className="name-input"
+            defaultValue={tempName}
+            placeholder="Name"
+            type="text"
+            onChange={(event) => {
+            setTempName(event.target.value);
+            }}
+        />
 
-            <input
-                className="price-input"
-                defaultValue={tempPrice}
-                placeholder="Price ($)"
-                onChange={(event) => {
-                setTempPrice(event.target.value);
-                }}
-            />
+        <input
+            className="price-input"
+            defaultValue={tempPrice}
+            placeholder="Price ($)"
+            onChange={(event) => {
+            setTempPrice(event.target.value);
+            }}
+        />
 
-            <input
-                className="image-input"
-                defaultValue={tempImageLink}
-                placeholder="Image Url"
-                onChange={(event) => {
-                setTempImageLink(event.target.value);
-                }}
-            />
+        <input
+            className="image-input"
+            defaultValue={tempImageLink}
+            placeholder="Image Url"
+            onChange={(event) => {
+            setTempImageLink(event.target.value);
+            }}
+        />
 
-            <input
-                className="description-input"
-                defaultValue={tempDescription}
-                placeholder="Description"
-                onChange={(event) => {
-                setTempDescription(event.target.value);
-                }}
-            />
+        <input
+            className="description-input"
+            defaultValue={tempDescription}
+            placeholder="Description"
+            onChange={(event) => {
+            setTempDescription(event.target.value);
+            }}
+        />
 
-            <button className="submit-button" onClick={onButtonSubmit}>
-                {submitButtonDescription}
-            </button>
-            </form>
-            {/* <div className="display-items"></div> */}
-            {/* <DisplayItems
+        <button className="submit-button" onClick={onButtonSubmit}>
+            {submitButtonDescription}
+        </button>
+        </form>
+        {/* <div className="display-items"></div> */}
+        {/* <DisplayItems
             items={itemList.items}
             prePopulateTextFields={prePopulateTextFields}
             /> */}
-            <itemContext.Provider
-            value={{
-                state: props.stateValues,
-                items: itemList,
-                handleDeleteItem: props.handleDeleteItem,
-                handleChangePageNumber: props.handleChangePageNumber,
-                handleClickNext: props.handleClickNext,
-                handleClickPrevious: props.handleClickPrevious,
-                // // state: this.state,
-                // handleDeleteItem: this.handleDeleteItem,
-                // handleChangePageNumber: this.handleChangePageNumber,
-                // handleClickNext: this.handleClickNext,
-                // handleClickPrevious: this.handleClickPrevious,
-            }}
-            >
-            {/* <AddAndEditProduct 
+        <itemContext.Provider
+        value={{
+            state: props.stateValues,
+            items: itemList,
+            handleDeleteItem: props.handleDeleteItem,
+            handleChangePageNumber: props.handleChangePageNumber,
+            handleClickNext: props.handleClickNext,
+            handleClickPrevious: props.handleClickPrevious,
+            // // state: this.state,
+            // handleDeleteItem: this.handleDeleteItem,
+            // handleChangePageNumber: this.handleChangePageNumber,
+            // handleClickNext: this.handleClickNext,
+            // handleClickPrevious: this.handleClickPrevious,
+        }}
+        >
+        {/* <AddAndEditProduct 
             // stateValues={this.state}
             // handleDeleteItem={this.handleDeleteItem}
             // handleChangePageNumber={ this.handleChangePageNumber}
@@ -236,11 +228,15 @@ return (
             // handleClickPrevious={this.handleClickPrevious}
             // />
             */}
-            <DisplayItems className="list-container" items={itemList} handleDeleteItem={handleDeleteItem}/>
-            </itemContext.Provider>
-        </div>
-        {/* ) : null} */}
+        <DisplayItems
+            className="list-container"
+            items={itemList}
+            handleDeleteItem={handleDeleteItem}
+        />
+        </itemContext.Provider>
     </div>
+    {/* ) : null} */}
+    {/* </div> */}
     </div>
 );
 };
