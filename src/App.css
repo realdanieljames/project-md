@@ -8,7 +8,7 @@
     height: 729px;
     margin: 50px auto;
     display: grid;
-    border: 10px solid black;
+    /* border: 10px solid black; */
     grid-template-areas: 'ctl ctl lst' 'ctl ctl lst' 'ctl ctl lst';
     /* grid-template-areas: 'ctl  lst' 'ctl  lst' 'ctl  lst'; */
 }
