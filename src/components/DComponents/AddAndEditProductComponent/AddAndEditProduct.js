@@ -10,8 +10,7 @@ import logo from "./EnergyFoodLogo.png";
 //========================================================================================//
 
 const AddAndEditProduct = (props) => {
-const [showEditControls, setShowEditControls] = useState(true);
-const [showAddControls, setShowAddControls] = useState(true);
+
 let [tempID, setTempID] = useState("");
 let [tempName, setTempName] = useState("");
 let [tempPrice, setTempPrice] = useState("");
@@ -116,7 +115,7 @@ const onEditButtonSubmit = async (id) => {
         }
     }),
     ];
-    console.log(arr[0]);
+
     setItemList(arr[0]);
 };
 
@@ -129,8 +128,7 @@ const handleDeleteItem = (id) => {
 //========================================================================================//
 return (
     <div>
-    {/* <div> */}
-    {/* {showEditControls || showAddControls ? ( */}
+
     <div className="overall-item-container">
         <form className="edit-item-container">
         <div className="form-heading">
@@ -200,11 +198,7 @@ return (
             {submitButtonDescription}
         </button>
         </form>
-        {/* <div className="display-items"></div> */}
-        {/* <DisplayItems
-            items={itemList.items}
-            prePopulateTextFields={prePopulateTextFields}
-            /> */}
+
         <itemContext.Provider
         value={{
             state: props.stateValues,
@@ -213,21 +207,10 @@ return (
             handleChangePageNumber: props.handleChangePageNumber,
             handleClickNext: props.handleClickNext,
             handleClickPrevious: props.handleClickPrevious,
-            // // state: this.state,
-            // handleDeleteItem: this.handleDeleteItem,
-            // handleChangePageNumber: this.handleChangePageNumber,
-            // handleClickNext: this.handleClickNext,
-            // handleClickPrevious: this.handleClickPrevious,
+
         }}
         >
-        {/* <AddAndEditProduct 
-            // stateValues={this.state}
-            // handleDeleteItem={this.handleDeleteItem}
-            // handleChangePageNumber={ this.handleChangePageNumber}
-            // handleClickNext={this.handleClickNext}
-            // handleClickPrevious={this.handleClickPrevious}
-            // />
-            */}
+
         <DisplayItems
             className="list-container"
             items={itemList}
@@ -235,8 +218,8 @@ return (
         />
         </itemContext.Provider>
     </div>
-    {/* ) : null} */}
-    {/* </div> */}
+
+
     </div>
 );
 };

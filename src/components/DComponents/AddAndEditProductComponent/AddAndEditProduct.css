@@ -1,5 +1,4 @@
 .overall-item-container {
-    /* border: red solid 2px; */
     display: grid;
     grid-template-columns: 6fr 3fr;
     grid-template-rows: 1fr;
@@ -19,13 +18,7 @@
     box-shadow: 3px 3px 3px 3px rgba(121, 118, 118, 0.176);
     background-color: white;
     height: 650px;
-    /* margin: auto; */
-    /* border: 2px solid black; */
     width: 550px;
-    /* justify-content: center; */
-    /* height: 500px; */
-    /* padding: 3px; */
-    /* background-color: aqua; */
 }
 
 .form-heading {
@@ -57,14 +50,10 @@
     grid-template-columns: 50% 50%;
     grid-template-rows: 100%;
     width: 450px;
-    /* background-color: rgb(104, 184, 104); */
     justify-self: center;
-    /* border: 1px solid rgb(104, 184, 104); */
-    /* margin: auto; */
     color: white;
     text-align: center;
     height: 50px;
-    /* margin-bottom: 0px; */
 }
 
 .add-control-header h3 {
@@ -104,14 +93,11 @@
 }
 
 select {
-    /* padding: 50px; */
     width: 450px;
     padding-left: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
-    /* height: 10px; */
     margin-bottom: 0px;
-    /* margin-top: 0px; */
     background-color: rgba(121, 118, 118, 0.176);
     border: none;
     justify-self: center;
@@ -121,11 +107,7 @@ select {
     grid-row: 3/4;
     grid-column: 1/2;
     justify-self: center;
-    /* width: 300px; */
-    /* padding: 50px; */
     height: 60px;
-    /* margin: auto; */
-    /* padding-left: 250px; */
 }
 
 span.select-options {
@@ -135,11 +117,6 @@ span.select-options {
 }
 
 input {
-    /* border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: 2px; */
-    /* margin-top: 5px; */
     margin-bottom: 0px;
     padding-left: 10px;
     justify-self: center;
@@ -149,7 +126,6 @@ input {
     color: black;
     margin-right: 30px;
     margin-left: 30px;
-    /* padding: 15px; */
 }
 
 .name-input {
@@ -176,7 +152,6 @@ input {
 .submit-button {
     grid-row: 8/9;
     grid-column: 1/2;
-    /* margin: auto; */
     width: 220px;
     height: 50px;
     justify-self: center;
